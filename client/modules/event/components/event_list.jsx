@@ -1,8 +1,22 @@
 import React from 'react';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class EventList extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  insert() {
+    this.props.insert({
+      title: 'untitled',
+      date: new Date(),
+      start: new Date(),
+      end: new Date(),
+      category: '',
+      files: [],
+      participants: [],
+    })
   }
 
   renderEvents() {
@@ -22,6 +36,11 @@ class EventList extends React.Component {
     return (
       <div>
         EventList
+        <FloatingActionButton
+          onTouchTap={this.insert.bind(this)}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
         <ul>{this.renderEvents()}</ul>
       </div>
     );

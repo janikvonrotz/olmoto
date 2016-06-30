@@ -7,9 +7,12 @@ export default function () {
     'event.update'(event) {
         check(event, Object)
         var eventId = event._id;
-
+        delete event._id;
         Events.update(eventId, {$set: event})
-
+    },
+    'event.insert'(event) {
+        check(event, Object)
+        return Events.insert(event)
     }
   });
 }

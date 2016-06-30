@@ -11,7 +11,8 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  insert: actions.events.insert,
 });
 
 export default composeAll(
