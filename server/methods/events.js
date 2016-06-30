@@ -13,6 +13,10 @@ export default function () {
     'event.insert'(event) {
         check(event, Object)
         return Events.insert(event)
-    }
+    },
+    'event.remove'(event) {
+        check(event, Object)
+        Events.remove(event._id)
+    },
   });
 }

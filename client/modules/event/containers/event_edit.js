@@ -13,6 +13,7 @@ export const composer = ({context, eventId}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   update: actions.events.update,
+  remove: actions.events.remove,
 });
 
 export default composeAll(

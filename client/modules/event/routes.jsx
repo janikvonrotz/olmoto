@@ -4,6 +4,7 @@ import {mount} from 'react-mounter';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import EventPage from './components/event_page';
 import EventEdit from './containers/event_edit';
+import EventView from './containers/event_view';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
