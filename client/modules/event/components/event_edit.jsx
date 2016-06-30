@@ -40,32 +40,39 @@ class EventEdit extends React.Component {
                 title={event.title}
             />
             <CardText>
-                <TextField 
+                <TextField
                     defaultValue={event.title}
                     floatingLabelText="Title"
                     onChange={this.updateField.bind(this, 'title')}
                 />
                 <DatePicker
                     defaultDate={event.date}
+                    floatingLabelText="Date"
                     onChange={this.updateField.bind(this, 'date')}
                 />
                 <TimePicker
                     hintText="Start"
                     format="24hr"
                     defaultTime={event.start}
+                    floatingLabelText="Start"
                     onChange={this.updateField.bind(this, 'start')}
                 />
                 <TimePicker
                     hintText="End"
                     format="24hr"
                     defaultTime={event.end}
+                    floatingLabelText="End"
                     onChange={this.updateField.bind(this, 'end')}
                 />
-                <SelectField value={this.state.category} onChange={this.updateSelectField.bind(this, 'category')}>
+                <SelectField
+                  value={this.state.category}
+                  onChange={this.updateSelectField.bind(this, 'category')}
+                  floatingLabelText="Category"
+                >
                     <MenuItem value={'food'} primaryText="Food" />
                     <MenuItem value={'sport'} primaryText="Sport" />
                 </SelectField>
-                <TextField 
+                <TextField
                     defaultValue={event.description}
                     floatingLabelText="Description"
                     multiLine={true}

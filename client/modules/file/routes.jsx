@@ -11,7 +11,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'file.page',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<FilePage />)
+        content: <FilePage />
       });
     }
   });

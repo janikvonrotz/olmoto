@@ -13,7 +13,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'event.list',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<EventPage />)
+        content: <EventPage />
       });
     }
   });
@@ -22,7 +22,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'event.edit',
     action({eventId}) {
       mount(MainLayoutCtx, {
-        content: () => (<EventEdit eventId={eventId} />)
+        content: <EventEdit eventId={eventId} />
       });
     }
   });
@@ -31,7 +31,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'event.view',
     action({eventId}) {
       mount(MainLayoutCtx, {
-        content: () => (<EventView eventId={eventId} />)
+        content: <EventView eventId={eventId} />
       });
     }
   });
