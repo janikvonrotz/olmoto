@@ -21,16 +21,6 @@ class FileList extends React.Component {
     super(props);
   }
 
-  renderFiles() {
-    return (
-      this.props.files.map((file) => {
-        return (
-          <li key={file._id}>{file.title}</li>
-        );
-      })
-    );
-  }
-
   renderGrid(){
     return (
       <GridList
@@ -43,7 +33,6 @@ class FileList extends React.Component {
             key={file._id}
             title={file.title}
             subtitle={<span>by <b>{file.author}</b></span>}
-            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
           >
             <img src={file.img} />
           </GridTile>
@@ -57,9 +46,6 @@ class FileList extends React.Component {
     return (
       <div>
         FileList
-        <ul>
-        {this.renderFiles()}
-        </ul>
         {this.renderGrid()}
       </div>
     );

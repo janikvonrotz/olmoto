@@ -5,6 +5,13 @@ import {check, Match} from 'meteor/check';
 export default function () {
   Meteor.publish('file.list', function (filterText) {
     check(filterText, Match.Optional(String));
-    return Files.collection.find({});
+    var options = {}
+    if (filterText === '') {
+        return Files.collection.find({}, options);
+    } else {
+        return Files.collection.find({$or: [
+            {name: {$regex: filterText}},
+        ]}, options)
+    }
   });
 }
