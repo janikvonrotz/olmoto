@@ -19,6 +19,7 @@
     "react-mounter": "^1.0.0",
     "react-simple-di": "^1.0.1"
   },
+  
   "devDependencies": {
     "enzyme": "^2.2.0",
     "jsdom": "^8.0.4",
