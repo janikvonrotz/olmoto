@@ -1,11 +1,12 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const Layout = ({content = () => null }) => (
-  <div>
+  <MuiThemeProvider>
     <div>
       {content()}
     </div>
-  </div>
+  </MuiThemeProvider>
 );
 
 export default Layout;
