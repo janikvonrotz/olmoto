@@ -11,7 +11,7 @@ export default {
         if (err) {
             console.log(err.message)
         } else {
-            FlowRouter.go('/events/' + res)
+            FlowRouter.go('/events/' + res + '/edit')
         }
     })
   },

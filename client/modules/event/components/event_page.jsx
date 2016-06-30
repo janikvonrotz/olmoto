@@ -21,6 +21,7 @@ class EventPage extends React.Component {
         <TextField
           id="search"
           value={this.state.value}
+          floatingLabelText="Search"
           onChange={this.updateFilterText.bind(this)}
         />
         <EventList filterText={this.state.filterText} />

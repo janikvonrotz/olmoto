@@ -17,7 +17,7 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  FlowRouter.route('/events/:eventId', {
+  FlowRouter.route('/events/:eventId/edit', {
     name: 'event.edit',
     action({eventId}) {
       mount(MainLayoutCtx, {
@@ -27,10 +27,10 @@ export default function (injectDeps, {FlowRouter}) {
   });
 
   FlowRouter.route('/events/:eventId', {
-    name: 'event.edit',
+    name: 'event.view',
     action({eventId}) {
       mount(MainLayoutCtx, {
-        content: () => (<EventEdit eventId={eventId} />)
+        content: () => (<EventView eventId={eventId} />)
       });
     }
   });
