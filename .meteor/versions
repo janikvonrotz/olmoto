@@ -12,6 +12,7 @@ caching-compiler@1.0.5_1
 caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.3
+coffeescript@1.1.2_1
 ddp@1.2.5
 ddp-client@1.2.8_1
 ddp-common@1.2.6
@@ -49,6 +50,8 @@ mongo-id@1.0.5
 npm-mongo@1.4.44_1
 observe-sequence@1.0.12
 ordered-dict@1.0.8
+ostrio:cookies@2.0.4
+ostrio:files@1.5.6
 promise@0.7.2_1
 random@1.0.10
 reactive-dict@1.1.8
@@ -56,6 +59,7 @@ reactive-var@1.0.10
 reload@1.1.10
 retry@1.0.8
 routepolicy@1.0.11
+sha@1.0.8
 spacebars@1.0.12
 spacebars-compiler@1.0.12
 standard-minifier-css@1.0.7_1
