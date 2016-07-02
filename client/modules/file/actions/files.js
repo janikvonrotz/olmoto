@@ -1,8 +1,8 @@
 import {Files} from '/lib/collections';
+import * as notification from 'notie';
 
 export default {
   upload({Meteor}, file) {
-    console.log(file);
     if (file) {
         var uploadInstance = Files.insert({
           file: file,
@@ -11,21 +11,17 @@ export default {
         }, false);
 
         uploadInstance.on('start', function() {
-          // template.currentFile.set(this);
         });
 
         uploadInstance.on('error', function(error) {
-          console.error(error);
-          // template.currentFile.set(false);
         });
 
         uploadInstance.on('end', function(error, fileObj) {
           if (error) {
-            alert('Error during upload: ' + error.reason);
+            notification.alert(3, error.reason, 2.5);
           } else {
-            alert('File "' + fileObj.name + '" successfully uploaded');
+            notification.alert(1, 'Successfully uploaded.', 2.5);
           }
-          // template.currentFile.set(false);
         });
 
         uploadInstance.start();

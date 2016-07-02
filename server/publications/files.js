@@ -14,4 +14,8 @@ export default function () {
         ]}, options)
     }
   });
+
+  Meteor.publish('file.item', function (fileId) {
+    return Files.collection.find(fileId);
+  });
 }

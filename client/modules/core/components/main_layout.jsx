@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {AppBar, Drawer, MenuItem} from 'material-ui';
 import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
+import 'notie/dist/notie.css';
 import Clear from 'material-ui/svg-icons/content/clear';
 
 class Layout extends React.Component {
