@@ -22,7 +22,7 @@
     "react-komposer": "^1.3.0",
     "react-mounter": "^1.0.0",
     "react-simple-di": "^1.0.1",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
   },
   "devDependencies": {
     "enzyme": "^2.2.0",
