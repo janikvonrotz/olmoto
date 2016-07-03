@@ -1,4 +1,4 @@
 {
   "presets": ["es2015", "stage-2", "react"],
-  "plugins": ["react-require", "babel-root-slash-import"]
+  "plugins": ["react-require", "babel-plugin-transform-decorators-legacy","babel-root-slash-import"]
 }

@@ -1,12 +1,14 @@
 import React from 'react';
 import {FloatingActionButton} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
+import keydown from 'react-keydown';
 
 class FileView extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  @keydown( 'right' )
   goTo(){
     this.props.goTo("next", this.props.file);
   }

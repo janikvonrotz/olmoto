@@ -4,10 +4,10 @@ Create secret events and share photos with your friends.
 
 # Configure and Run
 
-Copy `settings.json` to `settings-dev.json` and update the copy.
-Run `meteor run dev`
+* Copy `settings.json` to `settings-dev.json` and update the copy.
+* Run `meteor run dev`
 
-# user
+# notes
 
 One page to create new user
 Firstname, Lastname, Mail, Password Random.id(), Admin
@@ -23,6 +23,10 @@ Get user list by Id
 On Participate store count of participants in event -> inc or dec
 
 # Ressources
+
+key press handling for react components
+https://github.com/glortho/react-keydown
+https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy
 
 Sort not working in publication
 http://stackoverflow.com/questions/15153349/meteor-subscribe-doesnt-update-sort-order-of-collection
