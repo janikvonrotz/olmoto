@@ -7,15 +7,19 @@ class FileView extends React.Component {
     super(props);
   }
 
+  goTo(){
+    this.props.goTo("next", this.props.file);
+  }
+
   render() {
+    const {file} = this.props;
     return (
       <div>
-        FileView
-        {this.props.file ? this.props.file._id : null}
+        {file ? file._id : null}
         <FloatingActionButton>
          <HardwareKeyboardArrowLeft />
        </FloatingActionButton>
-       <FloatingActionButton>
+       <FloatingActionButton onTouchTap={this.goTo.bind(this)}>
         <HardwareKeyboardArrowRight />
       </FloatingActionButton>
       </div>

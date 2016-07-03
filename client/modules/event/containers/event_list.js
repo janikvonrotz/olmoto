@@ -6,7 +6,7 @@ export const composer = ({context, filterText}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('event.list', filterText).ready()) {
       var events = Collections.Events.find().fetch();
-      onData(null, {events});    
+      onData(null, {events});
   }
 };
 

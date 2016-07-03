@@ -7,8 +7,8 @@ export default function () {
   Meteor.publish('event.list', function (filterText) {
     check(filterText, Match.Optional(String))
     var options = {sort: {date: -1}}
-    if (filterText === '') {
-        return Events.find({}, options);        
+    if (filterText === '' || !filterText) {
+        return Events.find({}, options);
     } else {
         return Events.find({$or: [
             {title: {$regex: filterText}},

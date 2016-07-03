@@ -1,22 +1,24 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import FileView from '../components/file_view.jsx';
+import FileEdit from '../components/file_edit.jsx';
 
 export const composer = ({context, fileId}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('file.item', fileId).ready()) {
+  if (Meteor.subscribe('file.item', fileId).ready() && Meteor.subscribe('event.list').ready()) {
       const file = Collections.Files.collection.findOne();
+      const events = Collections.Events.find().fetch();
       console.log(file)
-      onData(null, {file});
+      onData(null, {file, events});
   }
 };
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  goTo: actions.files.goTo,
+  update: actions.files.update,
+  remove: actions.files.remove,
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(FileView);
+)(FileEdit);
