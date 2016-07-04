@@ -6,7 +6,7 @@ class FileEdit extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {eventId: props.file.eventId};
+    this.state = {albumId: props.file.albumId};
   }
 
   updateSelectField(name, event, index, value){
@@ -26,13 +26,14 @@ class FileEdit extends React.Component {
 
   render() {
     const {file, events} = this.props;
+    if(!file){return <div></div>}
     return (
-      <div>
+      <div className="file-edit">
         FileEdit
         {file ? file._id : null}
         <SelectField
-          value={this.state.eventId}
-          onChange={this.updateSelectField.bind(this, 'eventId')}
+          value={this.state.albumId}
+          onChange={this.updateSelectField.bind(this, 'albumId')}
           floatingLabelText="Event"
         >
             {events.map((event) => {

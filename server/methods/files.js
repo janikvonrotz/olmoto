@@ -18,10 +18,32 @@ export default function () {
         check(action, String)
         check(file, Object)
 
-        // return next or previous item, optionally filter selection by eventId
-        const result = Files.collection.find({uploadedAt: {$lt: file.uploadedAt}}, {sort: {uploadedAt: -1}, limit: 1}).fetch()[0]
+        function getItem (type) {
+          var actions = {
+            'next': () => {
+              const result = Files.collection.find({uploadedAt: {$lt: file.uploadedAt}}, {sort: {uploadedAt: -1}, limit: 1}).fetch()[0]
+              // if at the end ost list return first
+              if(!result){
+                // get first item
+                return Files.collection.find({}, {sort: {uploadedAt: -1}}).fetch()[0];
+              }
+              return result
+            },
+            'previous': () => {
+              const result = Files.collection.find({uploadedAt: {$gt: file.uploadedAt}}, {sort: {uploadedAt: 1}, limit: 1}).fetch()[0]
+              // if at the end ost list return first
+              if(!result){
+                // get first item
+                return Files.collection.find({}, {sort: {uploadedAt: 1}}).fetch()[0];
+              }
+              return result
+            },
+          };
+          return actions[type]();
+        }
 
-        return result._id;
+        // get item
+        return getItem(action)._id;
     },
   });
 }

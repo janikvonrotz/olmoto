@@ -5,8 +5,8 @@ import FileView from '../components/file_view.jsx';
 export const composer = ({context, fileId}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('file.item', fileId).ready()) {
-      const file = Collections.Files.collection.findOne();
-      console.log(file)
+      var file = Collections.Files.collection.findOne();
+      file.src = Collections.Files.link(file)
       onData(null, {file});
   }
 };

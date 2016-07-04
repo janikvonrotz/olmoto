@@ -8,7 +8,7 @@ export const composer = ({context, filterText}, onData) => {
       var files = Collections.Files.collection.find({}, {sort: {uploadedAt: -1}}).fetch();
       console.log(files)
       files = files.map((file) => {
-        return {_id: file._id, img: Collections.Files.link(file, 'thumb'), title: file.name, author: "Janik"}
+        return {_id: file._id, src: Collections.Files.link(file, 'thumb'), title: file.name, author: "Janik"}
       });
       onData(null, {files});
   }

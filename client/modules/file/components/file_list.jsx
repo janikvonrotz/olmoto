@@ -34,7 +34,7 @@ class FileList extends React.Component {
               title={file.title}
               subtitle={<span>by <b>{file.author}</b></span>}
             >
-              <img src={file.img} />
+              <img src={file.src} />
             </GridTile>
           </a>
         ))}
@@ -43,9 +43,10 @@ class FileList extends React.Component {
   }
 
   render() {
+    const {files} = this.props;
+    if(!files){return <div></div>}
     return (
-      <div>
-        FileList
+      <div className="file-list">
         {this.renderGrid()}
       </div>
     );

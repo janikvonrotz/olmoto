@@ -6,6 +6,12 @@ import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'notie/dist/notie.css';
 import Clear from 'material-ui/svg-icons/content/clear';
 
+const styles = {
+  row: {
+    margin: 0,
+  },
+};
+
 class Layout extends React.Component {
 
   constructor(props) {
@@ -21,7 +27,7 @@ class Layout extends React.Component {
   render(){
     return(
       <MuiThemeProvider>
-        <div className="row">
+        <div className="row" style={styles.row}>
           <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div className="box-row"></div></div>
           <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div className="box">

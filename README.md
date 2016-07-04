@@ -5,7 +5,7 @@ Create secret events and share photos with your friends.
 # Configure and Run
 
 * Copy `settings.json` to `settings-dev.json` and update the copy.
-* Run `meteor run dev`
+* Run `npm run dev`
 
 # notes
 
@@ -23,6 +23,9 @@ Get user list by Id
 On Participate store count of participants in event -> inc or dec
 
 # Ressources
+
+Switch case alternative
+https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/
 
 key press handling for react components
 https://github.com/glortho/react-keydown

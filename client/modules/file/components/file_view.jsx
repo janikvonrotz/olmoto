@@ -1,5 +1,5 @@
 import React from 'react';
-import {FloatingActionButton} from 'material-ui';
+import {FloatingActionButton, Card, CardTitle, CardMedia} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 
@@ -9,21 +9,35 @@ class FileView extends React.Component {
   }
 
   @keydown( 'right' )
-  goTo(){
+  goToNext(){
     this.props.goTo("next", this.props.file);
+  }
+
+  @keydown( 'left' )
+  goToPrevious(){
+    this.props.goTo("previous", this.props.file);
   }
 
   render() {
     const {file} = this.props;
+    if(!file){return <div></div>}
     return (
-      <div>
-        {file ? file._id : null}
-        <FloatingActionButton>
-         <HardwareKeyboardArrowLeft />
-       </FloatingActionButton>
-       <FloatingActionButton onTouchTap={this.goTo.bind(this)}>
-        <HardwareKeyboardArrowRight />
-      </FloatingActionButton>
+      <div className="file-view">
+        <Card>
+          <CardMedia
+            overlay={<CardTitle title={file.name} subtitle="some description" />}
+          >
+            <img src={file.src} />
+          </CardMedia>
+
+          <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
+            <HardwareKeyboardArrowLeft />
+          </FloatingActionButton>
+
+          <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
+           <HardwareKeyboardArrowRight />
+          </FloatingActionButton>
+        </Card>
       </div>
     );
   }
