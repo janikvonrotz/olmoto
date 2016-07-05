@@ -5,14 +5,14 @@ Create secret events and share photos with your friends.
 # Configure and Run
 
 * Copy `settings.json` to `settings-dev.json` and update the copy.
-* Run `npm run dev`
+* Run `npm run dev`.
 
 # notes
 
 One page to create new user
 Firstname, Lastname, Mail, Password Random.id(), Admin
 Login by url, very insecure without SSL!
-/login?mail=user@test.com?password=43k5jd4fd23gfd;
+/login?mail=user@test.com?password=43k5jd4fd23gfd -> EventPage
 Redirect if logged In.
 
 For every picture select album (event).
@@ -23,6 +23,9 @@ Get user list by Id
 On Participate store count of participants in event -> inc or dec
 
 # Ressources
+
+Login and Redirect with Flowrouter
+https://medium.com/@satyavh/using-flow-router-for-authentication-ba7bb2644f42#.bskh7ph8k
 
 Switch case alternative
 https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/

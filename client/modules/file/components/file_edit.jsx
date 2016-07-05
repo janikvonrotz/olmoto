@@ -28,7 +28,7 @@ class FileEdit extends React.Component {
     const {file, events} = this.props;
     if(!file){return <div></div>}
     return (
-      <div className="file-edit">
+      <div>
         FileEdit
         {file ? file._id : null}
         <SelectField

@@ -46,7 +46,7 @@ class FileList extends React.Component {
     const {files} = this.props;
     if(!files){return <div></div>}
     return (
-      <div className="file-list">
+      <div>
         {this.renderGrid()}
       </div>
     );

@@ -39,6 +39,7 @@ class Layout extends React.Component {
                 <MenuItem primaryText="Close" onTouchTap={this.handleToggle.bind(this)} leftIcon={<Clear />} />
                 <MenuItem linkButton={true} href="/events" primaryText="Events" />
                 <MenuItem linkButton={true} href="/files" primaryText="Files" />
+                <MenuItem linkButton={true} href="/users" primaryText="Users" />
               </Drawer>
               {this.props.content}
             </div>

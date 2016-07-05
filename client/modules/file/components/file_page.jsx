@@ -40,7 +40,7 @@ class FilePage extends React.Component {
 
   render() {
     return (
-      <div className="file-page">
+      <div>
         <TextField
           id="search"
           value={this.state.value}

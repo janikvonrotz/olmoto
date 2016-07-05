@@ -22,7 +22,7 @@ class FileView extends React.Component {
     const {file} = this.props;
     if(!file){return <div></div>}
     return (
-      <div className="file-view">
+      <div>
         <Card>
           <CardMedia
             overlay={<CardTitle title={file.name} subtitle="some description" />}
