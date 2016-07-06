@@ -21,3 +21,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 kadira:flow-router
 ostrio:files
 cfs:graphicsmagick
+accounts-password

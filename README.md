@@ -6,6 +6,7 @@ Create secret events and share photos with your friends.
 
 * Copy `settings.json` to `settings-dev.json` and update the copy.
 * Run `npm run dev`.
+* Login with this url `http://localhost:3000/login/admin@olmoto.com/password`.
 
 # notes
 

@@ -3,6 +3,7 @@ import {mount} from 'react-mounter';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import UserPage from './containers/user_page';
+import Login from './containers/login';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -12,6 +13,15 @@ export default function (injectDeps, {FlowRouter}) {
     action() {
       mount(MainLayoutCtx, {
         content: <UserPage />
+      });
+    }
+  });
+
+  FlowRouter.route('/login/:email/:password', {
+    name: 'user.page',
+    action({email, password}) {
+      mount(MainLayoutCtx, {
+        content: <Login email={email} password={password} />
       });
     }
   });
