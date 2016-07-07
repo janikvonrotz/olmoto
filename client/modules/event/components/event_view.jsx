@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import moment from 'moment';
 
 class EventView extends React.Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class EventView extends React.Component {
 
   render() {
     const event = this.props.event
-    console.log(event)
     if (!event) {
         return <div></div>
     }
@@ -16,19 +16,23 @@ class EventView extends React.Component {
       <div>
         <Card>
           <CardMedia
-            overlay={<CardTitle title={event.title} />}
+            overlay={<CardTitle subtitle={moment(event.date).format('D MMMM') + ', ' + 
+              moment(event.start).format('hh:mm') + ' - ' + 
+              moment(event.end).format('hh:mm')} />}
           >
             <img src="http://lorempixel.com/600/337/nature/" />
           </CardMedia>
           <CardTitle
             title={event.title}
           />
-          <CardText
-            actAsExpander={true}
-            showExpandableButton={true}
-          >
+          <CardText>
             {event.description}
           </CardText>
+          <CardTitle
+            subtitle="Participants"
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
           <CardText
             expandable={true}
           >

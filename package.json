@@ -16,6 +16,7 @@
     "flexboxgrid": "^6.3.0",
     "mantra-core": "^1.2.0",
     "material-ui": "^0.15.1",
+    "moment": "^2.13.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-flexbox-grid": "^0.9.6",

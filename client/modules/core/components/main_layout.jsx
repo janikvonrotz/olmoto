@@ -25,7 +25,7 @@ class Layout extends React.Component {
           <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div className="box">
               <AppBar
-                title="Olmoto"
+                title="OLMOTO"
                 onTouchTap={this.handleToggle.bind(this)}
               />
               <Drawer open={this.state.open}>
