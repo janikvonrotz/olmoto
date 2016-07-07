@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import coreModule from './modules/core';
 import eventModule from './modules/event';
 import fileModule from './modules/file';
+import userModule from './modules/user';
 
 
 // init context
@@ -17,5 +18,6 @@ const app = createApp(context);
 app.loadModule(coreModule);
 app.loadModule(eventModule);
 app.loadModule(fileModule);
+app.loadModule(userModule);
 
 app.init();

@@ -1,0 +1,8 @@
+{
+  "public": {
+    "storagePath": "~/uploads"
+  },
+  "private": {
+    "MAIL_URL": "smtp://localhost:1025"
+  }
+}

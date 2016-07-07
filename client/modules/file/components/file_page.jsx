@@ -6,7 +6,7 @@ const styles = {
   button: {
     margin: 12,
   },
-  exampleImageInput: {
+  fileInput: {
     cursor: 'pointer',
     position: 'absolute',
     top: 0,
@@ -48,11 +48,11 @@ class FilePage extends React.Component {
           onChange={this.updateFilterText.bind(this)}
         />
         <RaisedButton
-          label="Choose an Image"
+          label="Choose Files"
           labelPosition="before"
-          style={styles.button}
+          style={styles.Button}
         >
-          <input onChange={this.upload.bind(this)} type="file" style={styles.exampleImageInput} />
+          <input multiple={true} onChange={this.upload.bind(this)} type="file" style={styles.fileInput} />
         </RaisedButton>
         <FileList filterText={this.state.filterText} />
       </div>

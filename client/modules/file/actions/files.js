@@ -1,8 +1,8 @@
 import {Files} from '/lib/collections';
+import * as notification from 'notie';
 
 export default {
   upload({Meteor}, file) {
-    console.log(file);
     if (file) {
         var uploadInstance = Files.insert({
           file: file,
@@ -11,24 +11,45 @@ export default {
         }, false);
 
         uploadInstance.on('start', function() {
-          // template.currentFile.set(this);
         });
 
         uploadInstance.on('error', function(error) {
-          console.error(error);
-          // template.currentFile.set(false);
         });
 
         uploadInstance.on('end', function(error, fileObj) {
           if (error) {
-            alert('Error during upload: ' + error.reason);
+            notification.alert(3, err.reason, 2.5);
           } else {
-            alert('File "' + fileObj.name + '" successfully uploaded');
+            notification.alert(1, 'Successfully uploaded.', 2.5);
           }
-          // template.currentFile.set(false);
         });
 
         uploadInstance.start();
       }
+  },
+  update({Meteor}, file) {
+    Meteor.call('file.update', file, (err, res) => {
+        if (err) {
+          notification.alert(3, err.reason, 2.5);
+        }
+    })
+  },
+  remove({Meteor, FlowRouter}, file) {
+    Meteor.call('file.remove', file, (err, res) => {
+        if (err) {
+          notification.alert(3, err.reason, 2.5);
+        } else {
+          FlowRouter.go('/files/')
+        }
+    })
+  },
+  goTo({Meteor, FlowRouter}, action, file) {
+    Meteor.call('file.getIdOf', action, file, (err, res) => {
+        if (err) {
+          notification.alert(3, err.reason, 2.5);
+        } else {
+          FlowRouter.go('/files/' + res)
+        }
+    })
   },
 }
