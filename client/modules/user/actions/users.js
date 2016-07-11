@@ -1,4 +1,5 @@
 import * as notification from 'notie';
+import { Accounts } from 'meteor/accounts-base';
 
 export default {
   login({Meteor, FlowRouter}, email, password) {
@@ -11,4 +12,11 @@ export default {
       }
     });
   },
+  insert({Meteor, FlowRouter}, user){
+    Accounts.createUser(user, (err, res) => {
+     if(err){
+       notification.alert(3, err.message, 2.5);
+     }
+   });
+  }
 }

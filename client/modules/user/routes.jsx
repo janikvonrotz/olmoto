@@ -18,11 +18,19 @@ export default function (injectDeps, {FlowRouter}) {
   });
 
   FlowRouter.route('/login/:email/:password', {
-    name: 'user.page',
+    name: 'user.login',
     action({email, password}) {
       mount(MainLayoutCtx, {
         content: <Login email={email} password={password} />
       });
+    }
+  });
+
+  FlowRouter.route('/logout', {
+    name: 'user.logout',
+    action() {
+      Meteor.logout();
+      FlowRouter.go('home')
     }
   });
 }

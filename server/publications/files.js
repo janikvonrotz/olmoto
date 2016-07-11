@@ -9,6 +9,7 @@ export default function () {
         return Files.collection.find({});
     } else {
         return Files.collection.find({$or: [
+            {_id: {$regex: filterText}},
             {name: {$regex: filterText}},
         ]})
     }

@@ -1,8 +1,11 @@
 {
   "public": {
-    "storagePath": "~/uploads"
+    "storage_path": "~/uploads"
   },
   "private": {
-    "MAIL_URL": "smtp://localhost:1025"
+    "mail_url": "smtp://localhost:1025",
+    "admin_email": "admin@olmoto.com",
+    "admin_password": "password",
+    "app_url": "https://olmoto.com"
   }
 }

@@ -40,6 +40,7 @@ class Layout extends React.Component {
                 <MenuItem linkButton={true} href="/events" primaryText="Events" />
                 <MenuItem linkButton={true} href="/files" primaryText="Files" />
                 <MenuItem linkButton={true} href="/users" primaryText="Users" />
+                { Meteor.user() ? <MenuItem linkButton={true} href="/logout" primaryText="Logout" /> : null}
               </Drawer>
               {this.props.content}
             </div>

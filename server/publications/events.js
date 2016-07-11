@@ -11,6 +11,7 @@ export default function () {
         return Events.find({}, options);
     } else {
         return Events.find({$or: [
+            {_id: {$regex: filterText}},
             {title: {$regex: filterText}},
             {category: {$regex: filterText}},
         ]}, options)

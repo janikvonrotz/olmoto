@@ -9,7 +9,8 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  insert: actions.users.insert,
 });
 
 export default composeAll(

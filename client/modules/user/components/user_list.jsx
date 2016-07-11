@@ -1,7 +1,7 @@
 import React from 'react';
-import {List, ListItem, Avatar, Divider, IconMenu, MenuItem, Subheader, IconButton} from 'material-ui';
+import {List, ListItem, Avatar, Divider, IconMenu, MenuItem, IconButton} from 'material-ui';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import {MoreVertIcon, FileFolder} from 'material-ui/svg-icons';
 
 const iconButtonElement = (
   <IconButton
@@ -16,8 +16,8 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Reply</MenuItem>
-    <MenuItem>Forward</MenuItem>
+    <MenuItem>Disable</MenuItem>
+    <MenuItem>Copy Login Link</MenuItem>
     <MenuItem>Delete</MenuItem>
   </IconMenu>
 );
@@ -27,76 +27,28 @@ class UserList extends React.Component {
     super(props);
   }
 
+  renderListItem(){
+    return this.props.users.map((user) => {
+      return (
+        <ListItem key={user._id}
+          leftAvatar={<Avatar icon={<FileFolder />} />}
+          rightIconButton={rightIconMenu}
+          primaryText={user.firstname + " " + user.lastname}
+          secondaryText={<p>{user.firstname}</p>}
+          secondaryTextLines={1}
+        />
+      );
+    })
+  }
+
   render() {
+    const {users} = this.props;
+    if(!users){return <div></div>}
     return (
       <div>
-      <List>
-        <Subheader>Today</Subheader>
-        <ListItem
-          leftAvatar={<Avatar src="images/ok-128.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="Brendan Lim"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Brunch this weekend?</span><br />
-              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="images/kolage-128.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="me, Scott, Jennifer"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Summer BBQ</span><br />
-              Wish I could come, but I&apos;m out of town this weekend.
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="Grace Ng"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Oui oui</span><br />
-              Do you have any Paris recs? Have you ever been?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="images/kerem-128.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="Kerem Suer"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Birthday gift</span><br />
-              Do you have any ideas what we can get Heidi for her birthday? How about a pony?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="Raquel Parrado"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Recipe to try</span><br />
-              We should eat this: grated squash. Corn and tomatillo tacos.
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-      </List>
+        <List>
+        {this.renderListItem()}
+        </List>
       </div>
     );
   }
