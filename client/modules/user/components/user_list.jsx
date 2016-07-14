@@ -27,27 +27,24 @@ class UserList extends React.Component {
     super(props);
   }
 
-  renderListItem(){
-    return this.props.users.map((user) => {
-      return (
-        <ListItem key={user._id}
-          leftAvatar={<Avatar icon={<FileFolder />} />}
-          rightIconButton={rightIconMenu}
-          primaryText={user.firstname + " " + user.lastname}
-          secondaryText={<p>{user.firstname}</p>}
-          secondaryTextLines={1}
-        />
-      );
-    })
-  }
-
   render() {
     const {users} = this.props;
     if(!users){return <div></div>}
     return (
       <div>
         <List>
-        {this.renderListItem()}
+          {(() => {
+            return users.map((user) => {
+              return (
+                <ListItem key={user._id}
+                  leftAvatar={<Avatar icon={<FileFolder />} />}
+                  primaryText={user.profile.firstname + " " + user.profile.lastname}
+                  secondaryText={<p>{user.emails[0].address}</p>}
+                  secondaryTextLines={1}
+                />
+              );
+            })
+          })()}
         </List>
       </div>
     );

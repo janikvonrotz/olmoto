@@ -30,6 +30,12 @@ On Participate store count of participants in event -> inc or dec
 
 # Ressources
 
+Meteor environment variables
+https://www.eventedmind.com/items/meteor-what-is-meteor-bindenvironment
+
+Meteor wrap async
+https://www.eventedmind.com/items/meteor-meteor-wrapasync
+
 Login and Redirect with Flowrouter
 https://medium.com/@satyavh/using-flow-router-for-authentication-ba7bb2644f42#.bskh7ph8k
 
