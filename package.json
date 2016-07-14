@@ -14,10 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.5",
+    "dropbox": "^0.10.3",
     "flexboxgrid": "^6.3.0",
     "mantra-core": "^1.2.0",
     "material-ui": "^0.15.1",
-    "moment": "^2.13.0",
+    "meteor-node-stubs": "^0.2.3",
+    "moment": "^2.14.1",
     "notie": "^3.2.0",
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.2.1",

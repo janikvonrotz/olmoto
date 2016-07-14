@@ -2,6 +2,11 @@
 
 Create secret events and share photos with your friends.
 
+* Stores photos on Dropbox.
+* Invite users by email.
+* Mobile first ui.
+* Deployable to heroku, modulus other other Meteor supporting services.
+
 # Configure and Run
 
 * Copy `settings.json` to `settings-dev.json` and update the copy.

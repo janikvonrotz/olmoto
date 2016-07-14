@@ -21,6 +21,7 @@ class FileView extends React.Component {
   render() {
     const {file} = this.props;
     if(!file){return <div></div>}
+    console.log(file)
     return (
       <div>
         <Card>
