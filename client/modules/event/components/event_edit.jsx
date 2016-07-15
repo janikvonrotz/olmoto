@@ -73,6 +73,9 @@ class EventEdit extends React.Component {
                 >
                     <MenuItem value={'food'} primaryText="Food" />
                     <MenuItem value={'sport'} primaryText="Sport" />
+                    <MenuItem value={'party'} primaryText="Party" />
+                    <MenuItem value={'chill'} primaryText="Chill" />
+                    <MenuItem value={'tourie'} primaryText="Tourie" />
                 </SelectField>
                 <TextField
                     defaultValue={event.description}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {FloatingActionButton, List, ListItem, Subheader, Divider} from 'material-ui';
 import {darkBlack} from 'material-ui/styles/colors';
-import {ContentAdd, MapsRestaurant} from 'material-ui/svg-icons';
+import {ContentAdd, MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
 
 class EventList extends React.Component {
@@ -33,6 +33,7 @@ class EventList extends React.Component {
         var events = value.map((event) => {
           return(
             <ListItem
+              leftIcon={this.renderIcon(event.category)}
               key={event._id}
               primaryText={event.title}
               secondaryText={<p><span style={{color: darkBlack}}>{moment(event.date).format('hh:mm')}</span><span> - {event.description}</span></p>}
@@ -63,7 +64,22 @@ class EventList extends React.Component {
       },
       'sport': () => {
         return (
-          < />
+          <PlacesFitnessCenter />
+        );
+      },
+      'party': () => {
+        return (
+          <MapsLocalBar />
+        );
+      },
+      'chill': () => {
+        return (
+          <NotificationAirlineSeatFlat />
+        );
+      },
+      'tourie': () => {
+        return (
+          <PlacesBeachAccess />
         );
       },
     };
@@ -78,7 +94,7 @@ class EventList extends React.Component {
         >
           <ContentAdd />
         </FloatingActionButton>
-        <ul>{this.renderEvents()}</ul>
+        {this.renderEvents()}
       </div>
     );
   }
