@@ -6,15 +6,14 @@ import {check, Match} from 'meteor/check';
 export default function () {
   Meteor.publish('event.list', function (filterText) {
     check(filterText, Match.Optional(String))
-    var options = {sort: {date: -1}}
     if (filterText === '' || !filterText) {
-        return Events.find({}, options);
+        return Events.find({});
     } else {
         return Events.find({$or: [
             {_id: {$regex: filterText}},
             {title: {$regex: filterText}},
             {category: {$regex: filterText}},
-        ]}, options)
+        ]})
     }
   });
 

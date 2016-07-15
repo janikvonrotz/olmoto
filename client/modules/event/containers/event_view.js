@@ -13,6 +13,7 @@ export const composer = ({context, eventId}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
+  goTo: actions.events.goTo,
 });
 
 export default composeAll(

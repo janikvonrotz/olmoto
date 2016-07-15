@@ -11,6 +11,7 @@ class EventEdit extends React.Component {
 
   updateField(name, event, value) {
     this.props.event[name] = value;
+    console.log(this.props.event)
   }
 
   updateSelectField(name, event, index, value){
@@ -33,6 +34,7 @@ class EventEdit extends React.Component {
     if (!event) {
         return <div></div>
     }
+    console.log(event)
     return (
       <div>
         <Card>

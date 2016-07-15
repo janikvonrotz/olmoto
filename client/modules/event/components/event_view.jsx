@@ -1,10 +1,22 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, FlatButton, CardText} from 'material-ui';
+import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
+import keydown from 'react-keydown';
 import moment from 'moment';
 
 class EventView extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  @keydown( 'right' )
+  goToNext(){
+    this.props.goTo("next", this.props.event);
+  }
+
+  @keydown( 'left' )
+  goToPrevious(){
+    this.props.goTo("previous", this.props.event);
   }
 
   render() {
@@ -22,6 +34,9 @@ class EventView extends React.Component {
           >
             <img src="http://lorempixel.com/600/337/nature/" />
           </CardMedia>
+          <CardActions>
+            <FlatButton label="Participate" />
+          </CardActions>
           <CardTitle
             title={event.title}
           />
@@ -38,8 +53,13 @@ class EventView extends React.Component {
           >
             {event.participants}
           </CardText>
-          <CardActions>
-          </CardActions>
+          <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
+            <HardwareKeyboardArrowLeft />
+          </FloatingActionButton>
+
+          <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
+           <HardwareKeyboardArrowRight />
+          </FloatingActionButton>
         </Card>
       </div>
     );

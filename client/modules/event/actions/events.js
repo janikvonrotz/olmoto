@@ -1,3 +1,5 @@
+import * as notification from 'notie';
+
 export default {
   update({Meteor}, event) {
     Meteor.call('event.update', event, (err, res) => {
@@ -24,4 +26,13 @@ export default {
         }
     })
   },  
+  goTo({Meteor, FlowRouter}, action, event) {
+    Meteor.call('event.getIdOf', action, event, (err, res) => {
+        if (err) {
+          notification.alert(3, err.reason, 2.5);
+        } else {
+          FlowRouter.go('/events/' + res)
+        }
+    })
+  },
 }
