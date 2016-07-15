@@ -18,13 +18,13 @@ export default {
 
         uploadInstance.on('end', function(error, fileObj) {
           if (error) {
-            notification.alert(3, err.reason, 2.5);
+            notification.alert(3, error.reason, 2.5);
           } else {
             notification.alert(1, 'Successfully uploaded.', 2.5);
             fileObj.albumId = file.albumId
-            Meteor.call('file.update', fileObj, (err, res) => {
-                if (err) {
-                  notification.alert(3, err.reason, 2.5);
+            Meteor.call('file.update', fileObj, (error, res) => {
+                if (error) {
+                  notification.alert(3, error.reason, 2.5);
                 }
             })
           }
