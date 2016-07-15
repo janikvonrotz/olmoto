@@ -1,5 +1,5 @@
 import React from 'react';
-import {FloatingActionButton, Card, CardTitle, CardMedia} from 'material-ui';
+import {FloatingActionButton, Card, CardTitle, CardMedia, RaisedButton, Link} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import Spinner from './spinner.jsx'
@@ -62,6 +62,12 @@ class FileView extends React.Component {
             />
           </CardMedia>
           {this.renderFileStatus()}
+          <RaisedButton
+            label="Edit"
+            linkButton={true}
+            href={file._id + "/edit"}
+            primary={true}
+          />
           <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
             <HardwareKeyboardArrowLeft />
           </FloatingActionButton>
