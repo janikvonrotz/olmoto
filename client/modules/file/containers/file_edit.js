@@ -16,6 +16,7 @@ export const depsMapper = (context, actions) => ({
   context: () => context,
   update: actions.files.update,
   remove: actions.files.remove,
+  goTo: actions.files.goTo,
 });
 
 export default composeAll(
