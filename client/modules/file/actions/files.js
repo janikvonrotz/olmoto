@@ -54,7 +54,11 @@ export default {
         if (err) {
           notification.alert(3, err.reason, 2.5);
         } else {
-          FlowRouter.go('/files/' + res)
+          if(FlowRouter.getRouteName() === "file.edit"){
+            FlowRouter.go('/files/' + res + "/edit")
+          }else{
+            FlowRouter.go('/files/' + res)
+          }
         }
     })
   },

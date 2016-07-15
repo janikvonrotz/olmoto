@@ -9,7 +9,6 @@ class FileEdit extends React.Component {
     super(props);
 
     this.state = {
-      albumId: props.file.albumId,
       fileStatus: 'loading'
     };
   }
@@ -87,15 +86,15 @@ class FileEdit extends React.Component {
             {this.renderFileStatus()}
 
             <TextField
-                defaultValue={file.name}
-                floatingLabelText="Name"
-                onChange={this.updateField.bind(this, 'name')}
+              defaultValue={file.name}
+              floatingLabelText="Name"
+              onChange={this.updateField.bind(this, 'name')}
             />
 
             <TextField
-                defaultValue={file.description}
-                floatingLabelText="Description"
-                onChange={this.updateField.bind(this, 'description')}
+              defaultValue={file.description}
+              floatingLabelText="Description"
+              onChange={this.updateField.bind(this, 'description')}
             />
 
             <SelectField
@@ -103,20 +102,20 @@ class FileEdit extends React.Component {
               onChange={this.updateSelectField.bind(this, 'albumId')}
               floatingLabelText="Event"
             >
-                {events.map((event) => {
-                  return (<MenuItem key={event._id} value={event._id} primaryText={event.title} />);
-                })}
+              {events.map((event) => {
+                return (<MenuItem key={event._id} value={event._id} primaryText={event.title} />);
+              })}
             </SelectField>
 
             <RaisedButton
-                label="Save"
-                onTouchTap={this.update.bind(this)}
-                primary={true}
+              label="Save"
+              onTouchTap={this.update.bind(this)}
+              primary={true}
             />
             <RaisedButton
-                label="Remove"
-                onTouchTap={this.remove.bind(this)}
-                secondary={true}
+              label="Remove"
+              onTouchTap={this.remove.bind(this)}
+              secondary={true}
             />
 
             <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
