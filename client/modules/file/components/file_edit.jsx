@@ -71,8 +71,7 @@ class FileEdit extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({
-      file: nextProps.file,
-      fileStatus: 'loading'
+      file: nextProps.file
     })
   }
 
@@ -80,7 +79,7 @@ class FileEdit extends React.Component {
     const {file} = this.state;
     const {events} = this.props;
     if(!file){return <div></div>}
-    console.log(file.name)
+    console.log(file)
     return (
       <div>
         <Card>
@@ -109,7 +108,7 @@ class FileEdit extends React.Component {
             />
 
             <SelectField
-              value={this.state.albumId}
+              value={file.albumId}
               onChange={this.updateSelectField.bind(this, 'albumId')}
               floatingLabelText="Event"
             >
