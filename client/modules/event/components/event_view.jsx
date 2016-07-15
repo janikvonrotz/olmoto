@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, RaisedButton, CardText, List, ListItem} from 'material-ui';
-import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
+import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import moment from 'moment';
 
@@ -84,9 +84,27 @@ class EventView extends React.Component {
             <HardwareKeyboardArrowLeft />
           </FloatingActionButton>
 
+          <FloatingActionButton linkButton={true} href="/events">
+            <ActionList />
+          </FloatingActionButton>
+
           <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
            <HardwareKeyboardArrowRight />
           </FloatingActionButton>
+
+          {(()=>{
+            if(Meteor.userId()){
+              return(
+                <RaisedButton
+                  label="Edit"
+                  linkButton={true}
+                  href={event._id + "/edit"}
+                  primary={true}
+                />
+              );
+            }
+          })()}
+
         </Card>
       </div>
     );

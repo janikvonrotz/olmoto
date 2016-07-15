@@ -5,6 +5,8 @@ export default {
     Meteor.call('event.update', event, (err, res) => {
         if (err) {
             console.log(err.message)
+        } else {
+            FlowRouter.go('/events/' + event._id)
         }
     })
   },
