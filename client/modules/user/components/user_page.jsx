@@ -39,6 +39,7 @@ class UserPage extends React.Component {
        firstname: this.refs.firstname.getValue(),
        lastname: this.refs.lastname.getValue(),
      },
+     initpass: this.refs.password.getValue(),
      admin: this.refs.admin.isChecked(),
     }
     this.props.insert(user)

@@ -70,6 +70,7 @@ class FileEdit extends React.Component {
   render() {
     const {file, events} = this.props;
     if(!file){return <div></div>}
+    console.log(file.name)
     return (
       <div>
         <Card>
