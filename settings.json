@@ -8,7 +8,5 @@
     "admin_password": "password",
     "app_url": "https://olmoto.com",
     "dropbox_token": "",
-    "dropbox_key": "",
-    "dropbox_secret": ""
   }
 }
