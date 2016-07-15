@@ -1,5 +1,5 @@
 import React from 'react';
-import {FloatingActionButton, Card, CardTitle, CardMedia, RaisedButton, Link} from 'material-ui';
+import {FloatingActionButton, Card, CardTitle, CardMedia, RaisedButton, CardText} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import Spinner from './spinner.jsx'
@@ -53,7 +53,7 @@ class FileView extends React.Component {
       <div>
         <Card>
           <CardMedia
-            overlay={<CardTitle title={file.name} subtitle="some description" />}
+            overlay={<CardTitle title={file.name} subtitle={file.description} />}
           >
             <img
               src={file.src}
@@ -61,20 +61,22 @@ class FileView extends React.Component {
               onError={this.handleFileLoadError.bind(this)}
             />
           </CardMedia>
-          {this.renderFileStatus()}
-          <RaisedButton
-            label="Edit"
-            linkButton={true}
-            href={file._id + "/edit"}
-            primary={true}
-          />
-          <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
-            <HardwareKeyboardArrowLeft />
-          </FloatingActionButton>
+          <CardText>
+            {this.renderFileStatus()}
+            <RaisedButton
+              label="Edit"
+              linkButton={true}
+              href={file._id + "/edit"}
+              primary={true}
+            />
+            <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
+              <HardwareKeyboardArrowLeft />
+            </FloatingActionButton>
 
-          <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
-           <HardwareKeyboardArrowRight />
-          </FloatingActionButton>
+            <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
+             <HardwareKeyboardArrowRight />
+            </FloatingActionButton>
+          </CardText>
         </Card>
       </div>
     );

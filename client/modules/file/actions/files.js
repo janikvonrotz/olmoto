@@ -20,8 +20,13 @@ export default {
           if (error) {
             notification.alert(3, err.reason, 2.5);
           } else {
-            console.log(fileObj)
             notification.alert(1, 'Successfully uploaded.', 2.5);
+            fileObj.albumId = file.albumId
+            Meteor.call('file.update', fileObj, (err, res) => {
+                if (err) {
+                  notification.alert(3, err.reason, 2.5);
+                }
+            })
           }
         });
 
