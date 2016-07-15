@@ -22,9 +22,9 @@ export default function () {
 
   Meteor.publish('file.albumCover', function (albumId) {
     check(albumId, String);
-    return Files.collection.find(
-      {"albumId": albumId},
-      {sort: {uploadedAt: -1}, limit: 1}
+    var result = Files.collection.find(
+      {"albumId": albumId}
     );
+    return result;
   });
 }

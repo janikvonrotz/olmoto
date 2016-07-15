@@ -8,7 +8,9 @@ export const composer = ({context, eventId}, onData) => {
   if (Meteor.subscribe('event.item', eventId).ready() && Meteor.subscribe('file.albumCover', eventId).ready()) {
     const event = Collections.Events.findOne();
     var cover = Collections.Files.collection.findOne();
-    cover = Collections.Files.link(cover);
+    if(cover){
+      cover = Collections.Files.link(cover);
+    }
     if(event && Meteor.subscribe('user.participants', event.participants).ready()) {
       const participants = Collections.Participants.find({}, {sort: {"profile.firstname": -1}}).fetch()
       onData(null, {event, cover, participants})

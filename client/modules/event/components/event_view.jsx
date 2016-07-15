@@ -30,7 +30,7 @@ class EventView extends React.Component {
   }
 
   render() {
-    const {event, participants} = this.props
+    const {event, participants, cover} = this.props
     if (!event) {
         return <div></div>
     }
@@ -43,7 +43,7 @@ class EventView extends React.Component {
               moment(event.start).format('hh:mm') + ' - ' + 
               moment(event.end).format('hh:mm')} />}
           >
-            <img src="http://lorempixel.com/600/337/nature/" />
+            <img src={cover} />
           </CardMedia>
           <CardActions>
           {(()=>{
