@@ -7,6 +7,15 @@ Create secret events and share photos with your friends.
 * Mobile first ui.
 * Deployable to heroku, modulus other other Meteor supporting services.
 
+# Todo
+
+* Event view
+* Event edit file upload
+* File edit
+* File navigation with album
+* Event participation
+* Access control file: all, user: admin, event: admin
+
 # Configure and Run
 
 * Copy `settings.json` to `settings-dev.json` and update the copy.
