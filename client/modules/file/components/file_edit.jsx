@@ -9,8 +9,9 @@ class FileEdit extends React.Component {
     super(props);
 
     this.state = {
+      file: props.file,
       fileStatus: 'loading'
-    };
+    }
   }
 
   handleFileLoaded() {
@@ -23,33 +24,34 @@ class FileEdit extends React.Component {
 
   @keydown( 'right' )
   goToNext(){
-    this.setState({ fileStatus: 'loading' });
-    this.props.goTo("next", this.props.file);
+    // this.setState({ fileStatus: 'loading' });
+    this.props.goTo("next", this.state.file);
   }
 
   @keydown( 'left' )
   goToPrevious(){
-    this.setState({ fileStatus: 'loading' });
-    this.props.goTo("previous", this.props.file);
+    // this.setState({ fileStatus: 'loading' });
+    this.props.goTo("previous", this.state.file);
   }
 
   updateField(name, event, value) {
-    this.props.file[name] = value;
+    var file = this.state.file;
+    file[name] = value;
+    this.setState({file: file})
   }
 
   updateSelectField(name, event, index, value){
-    var state = {}
-    state[name] = value
-    this.setState(state)
-    this.props.file[name] = value;
+    var file = this.state.file;
+    file[name] = value;
+    this.setState({file: file})
   }
 
   update() {
-    this.props.update(this.props.file);
+    this.props.update(this.state.file);
   }
 
   remove() {
-    this.props.remove(this.props.file);
+    this.props.remove(this.state.file);
   }
 
   renderFileStatus(){
@@ -67,8 +69,16 @@ class FileEdit extends React.Component {
     return actions[this.state.fileStatus]();
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      file: nextProps.file,
+      fileStatus: 'loading'
+    })
+  }
+
   render() {
-    const {file, events} = this.props;
+    const {file} = this.state;
+    const {events} = this.props;
     if(!file){return <div></div>}
     console.log(file.name)
     return (
@@ -87,13 +97,13 @@ class FileEdit extends React.Component {
             {this.renderFileStatus()}
 
             <TextField
-              defaultValue={file.name}
+              value={file.name}
               floatingLabelText="Name"
               onChange={this.updateField.bind(this, 'name')}
             />
 
             <TextField
-              defaultValue={file.description}
+              value={file.description}
               floatingLabelText="Description"
               onChange={this.updateField.bind(this, 'description')}
             />
