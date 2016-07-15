@@ -13,6 +13,8 @@ Create secret events and share photos with your friends.
 * File edit - Cover change (there can be only the one)
 * File edit - Spinner
 * Access control file: all, user: admin, event: admin
+* User - expand form
+* User - delete
 
 # Configure and Run
 
