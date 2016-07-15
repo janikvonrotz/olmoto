@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, FlatButton, CardText} from 'material-ui';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, RaisedButton, CardText, List, ListItem} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import moment from 'moment';
@@ -7,6 +7,16 @@ import moment from 'moment';
 class EventView extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  addParticipant() {
+    this.props.event.participants.push(Meteor.userId())
+    this.props.update(this.props.event)
+  }
+
+  removeParticipant() {
+    this.props.event.participants.splice(this.props.event.participants.indexOf(Meteor.userId()), 1)
+    this.props.update(this.props.event)
   }
 
   @keydown( 'right' )
@@ -20,10 +30,11 @@ class EventView extends React.Component {
   }
 
   render() {
-    const event = this.props.event
+    const {event, participants} = this.props
     if (!event) {
         return <div></div>
     }
+
     return (
       <div>
         <Card>
@@ -35,7 +46,13 @@ class EventView extends React.Component {
             <img src="http://lorempixel.com/600/337/nature/" />
           </CardMedia>
           <CardActions>
-            <FlatButton label="Participate" />
+          {(()=>{
+            if(event.participants.includes(Meteor.userId())){
+              return(<RaisedButton secondary={true} label="Nahh, not for me, bro..." onTouchTap={this.removeParticipant.bind(this)}/>);
+            }else{
+              return(<RaisedButton primary={true} label="Sign me up for that shit!" onTouchTap={this.addParticipant.bind(this)}/>);
+            }
+          })()}
           </CardActions>
           <CardTitle
             title={event.title}
@@ -51,7 +68,17 @@ class EventView extends React.Component {
           <CardText
             expandable={true}
           >
-            {event.participants}
+          <List>
+            {(() => {
+              return participants.map((user) => {
+                return (
+                  <ListItem key={user._id}
+                    primaryText={user.profile.firstname + " " + user.profile.lastname}
+                  />
+                );
+              })
+            })()}
+          </List>
           </CardText>
           <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
             <HardwareKeyboardArrowLeft />

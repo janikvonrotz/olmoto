@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {check, Match} from 'meteor/check';
 
 export default function () {
-  Meteor.publish('user.list', function (filterText) {
+  Meteor.publish('user.list', function(filterText) {
     check(filterText, Match.Optional(String))
     if (filterText === '' || !filterText) {
         return Meteor.users.find({});
@@ -14,4 +14,40 @@ export default function () {
         ]})
     }
   });
+  Meteor.publish('user.participants', function(participants) {
+    check(participants, Match.Optional(Array))
+
+    var self = this;
+    var handle = Meteor.users.find(
+      {"_id": { "$in": participants }},
+      { fields: { profile: 1, _id: 1 } },
+    ).observeChanges({
+      added: function (id, fields) {
+        self.added('participants', id, fields);
+      },
+      changed: function (id, fields) {
+        self.changed('participants', id, fields);
+      },
+      removed: function (id) {
+        self.removed('participants', id);
+      }
+    });
+
+    self.ready();
+
+    self.onStop(function () {
+      handle.stop();
+    });
+
+  });
+
+
+  //   if (0 < participants.length) {
+  //     return Meteor.users.find(
+  //       {"_id": { "$in": participants }},
+  //       { fields: { profile: 1, _id: 1 } },
+  //     )
+  //   }else{
+  //     return this.ready();
+  //   }
 }
