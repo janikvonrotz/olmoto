@@ -7,7 +7,7 @@ export const composer = ({context, filterText}, onData) => {
   if (Meteor.subscribe('file.list', filterText).ready()) {
       var files = Collections.Files.collection.find({}, {sort: {uploadedAt: -1}}).fetch();
       files = files.map((file) => {
-        return {_id: file._id, src: Collections.Files.link(file, 'thumb'), title: file.name, author: "Janik"}
+        return {_id: file._id, src: Collections.Files.link(file, 'thumb'), title: file.name}
       });
       onData(null, {files});
   }

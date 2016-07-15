@@ -9,11 +9,9 @@ Create secret events and share photos with your friends.
 
 # Todo
 
-* Event view
-* Event edit file upload
-* File edit
-* File navigation with album
-* Event participation
+* Event view - GoogleMaps
+* File edit - Cover change (there can be only the one)
+* File edit - Spinner
 * Access control file: all, user: admin, event: admin
 
 # Configure and Run

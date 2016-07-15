@@ -32,7 +32,6 @@ class FileList extends React.Component {
             <GridTile
               key={file._id}
               title={file.title}
-              subtitle={<span>by <b>{file.author}</b></span>}
             >
               <img src={file.src} />
             </GridTile>
