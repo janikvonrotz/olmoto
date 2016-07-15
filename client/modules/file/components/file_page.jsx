@@ -34,6 +34,7 @@ class FilePage extends React.Component {
   upload(event){
     console.log(event.target.files);
     _.map(event.target.files, (file) => {
+      file.albumId = this.props.albumId
       this.props.upload(file);
     });
   }
@@ -54,7 +55,7 @@ class FilePage extends React.Component {
         >
           <input multiple={true} onChange={this.upload.bind(this)} type="file" style={styles.fileInput} />
         </RaisedButton>
-        <FileList filterText={this.state.filterText} />
+        <FileList albumId={this.props.albumId} filterText={this.state.filterText} />
       </div>
     );
   }

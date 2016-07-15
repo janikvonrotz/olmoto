@@ -2,9 +2,9 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import FilePage from '../components/file_page.jsx';
 
-export const composer = ({context}, onData) => {
+export const composer = ({context, albumId}, onData) => {
   const {Meteor, Collections} = context();
-  onData(null, {});
+  onData(null, {albumId});
 };
 
 export const depsMapper = (context, actions) => ({
