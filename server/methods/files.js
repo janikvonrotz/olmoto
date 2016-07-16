@@ -1,22 +1,33 @@
 import {Files} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check, Match} from 'meteor/check';
+import {acl, is_allowed, cannot_access} from '/lib/access_control';
 
 export default function () {
   Meteor.methods({
     'file.update'(file) {
         check(file, Object)
+        if(!is_allowed('file.update', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
         var fileId = file._id;
         delete file._id;
         Files.collection.update(fileId, {$set: file})
     },
     'file.remove'(file) {
         check(file, Object)
+        if(!is_allowed('file.remove', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
         Files.remove(file._id)
     },
     'file.getIdOf'(action, file) {
         check(action, String)
         check(file, Object)
+
+        if(!is_allowed('file.getIdOf', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
 
         function getItem (type) {
           var actions = {

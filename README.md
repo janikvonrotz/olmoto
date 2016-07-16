@@ -14,8 +14,6 @@ Create secret events and share photos with your friends.
 * Access control file: all, user: admin, event: admin
 * User - expand form
 * User - delete
-* User - random password generator and invitation mail
-* Next and Previous navigation - add componentWillReceiveProps for spinner loading
 * React Helmet with viewport 1
 * Responsive File GridList
 
@@ -25,6 +23,7 @@ Create secret events and share photos with your friends.
 
 # Done
 
+* Next and Previous navigation - add componentWillReceiveProps for spinner loading
 * 2 files goto previous not working
 * File edit - Spinner
 * User - check if is admin by method on client startup

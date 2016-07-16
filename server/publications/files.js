@@ -1,30 +1,44 @@
 import {Files} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check, Match} from 'meteor/check';
+import {acl, is_allowed, cannot_access} from '/lib/access_control';
+
 
 export default function () {
   Meteor.publish('file.list', function (filterText) {
     check(filterText, Match.Optional(String));
-    if (filterText === '' || !filterText) {
-        return Files.collection.find({});
-    } else {
-        return Files.collection.find({$or: [
-            {_id: {$regex: filterText}},
-            {name: {$regex: filterText}},
-        ]})
+    if(is_allowed('file.list', this.userId)){
+      if (filterText === '' || !filterText) {
+          return Files.collection.find({});
+      } else {
+          return Files.collection.find({$or: [
+              {_id: {$regex: filterText}},
+              {name: {$regex: filterText}},
+          ]})
+      }
+    }else{
+      this.stop();
     }
   });
 
   Meteor.publish('file.item', function (fileId) {
     check(fileId, String);
-    return Files.collection.find(fileId);
+    if(is_allowed('file.item', this.userId)){
+      return Files.collection.find(fileId);
+    }else{
+      this.stop();
+    }
   });
 
-  Meteor.publish('file.albumCover', function (albumId) {
+  Meteor.publish('file.cover', function (albumId) {
     check(albumId, String);
-    var result = Files.collection.find(
-      {"albumId": albumId}
-    );
-    return result;
+    if(is_allowed('file.cover', this.userId)){
+      var result = Files.collection.find(
+        {"albumId": albumId}
+      );
+      return result;
+  }else{
+    this.stop();
+  }
   });
 }

@@ -3,7 +3,7 @@ import {TextField, FloatingActionButton, SelectField, MenuItem, RaisedButton, Ca
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import Spinner from './spinner.jsx'
-import {acl, is_allowed, cannot_access} from '../../user/libs/access_control';
+import {acl, is_allowed, cannot_access} from '/lib/access_control';
 
 class FileEdit extends React.Component {
   constructor(props) {
