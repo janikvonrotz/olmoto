@@ -11,10 +11,23 @@ Create secret events and share photos with your friends.
 
 * Event view - GoogleMaps
 * File edit - Cover change (there can be only the one)
-* File edit - Spinner
 * Access control file: all, user: admin, event: admin
 * User - expand form
 * User - delete
+* User - random password generator and invitation mail
+* Next and Previous navigation - add componentWillReceiveProps for spinner loading
+* React Helmet with viewport 1
+* Responsive File GridList
+
+# Bug
+
+* Event list - fallback for events without category or make category required
+
+# Done
+
+* 2 files goto previous not working
+* File edit - Spinner
+* User - check if is admin by method on client startup
 
 # Configure and Run
 

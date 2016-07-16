@@ -22,7 +22,7 @@ export default function () {
           var actions = {
             'next': () => {
               const result = Files.collection.find({uploadedAt: {$lt: file.uploadedAt}}, {sort: {uploadedAt: -1}, limit: 1}).fetch()[0]
-              // if at the end ost list return first
+              // if at the end of list return first
               if(!result){
                 // get first item
                 return Files.collection.find({}, {sort: {uploadedAt: -1}}).fetch()[0];
@@ -31,7 +31,7 @@ export default function () {
             },
             'previous': () => {
               const result = Files.collection.find({uploadedAt: {$gt: file.uploadedAt}}, {sort: {uploadedAt: 1}, limit: 1}).fetch()[0]
-              // if at the end ost list return first
+              // if at the start of list return localhost
               if(!result){
                 // get first item
                 return Files.collection.find({}, {sort: {uploadedAt: 1}}).fetch()[0];

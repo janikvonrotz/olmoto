@@ -3,6 +3,7 @@ import {TextField, FloatingActionButton, SelectField, MenuItem, RaisedButton, Ca
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import Spinner from './spinner.jsx'
+import {acl, is_allowed, cannot_access} from '../../user/libs/access_control';
 
 class FileEdit extends React.Component {
   constructor(props) {
@@ -24,13 +25,11 @@ class FileEdit extends React.Component {
 
   @keydown( 'right' )
   goToNext(){
-    // this.setState({ fileStatus: 'loading' });
     this.props.goTo("next", this.state.file);
   }
 
   @keydown( 'left' )
   goToPrevious(){
-    // this.setState({ fileStatus: 'loading' });
     this.props.goTo("previous", this.state.file);
   }
 
@@ -70,9 +69,18 @@ class FileEdit extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({
-      file: nextProps.file
-    })
+    if(this.props.file._id != nextProps.file._id){
+      this.setState({
+        file: nextProps.file,
+        fileStatus: 'loading'
+      })
+    }
+  }
+
+  componentDidMount(){
+    if(cannot_access('file.edit')){
+      FlowRouter.go('/files')
+    }
   }
 
   render() {

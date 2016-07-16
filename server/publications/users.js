@@ -2,6 +2,16 @@ import {Meteor} from 'meteor/meteor';
 import {check, Match} from 'meteor/check';
 
 export default function () {
+  Meteor.publish("user.current", function () {
+  if (this.userId) {
+    return Meteor.users.find(
+      {_id: this.userId},
+      {fields: {'profile': 1, 'admin': 1, 'emails': 1}});
+    } else {
+      this.ready();
+    }
+  });
+
   Meteor.publish('user.list', function(filterText) {
     check(filterText, Match.Optional(String))
     if (filterText === '' || !filterText) {
@@ -40,14 +50,4 @@ export default function () {
     });
 
   });
-
-
-  //   if (0 < participants.length) {
-  //     return Meteor.users.find(
-  //       {"_id": { "$in": participants }},
-  //       { fields: { profile: 1, _id: 1 } },
-  //     )
-  //   }else{
-  //     return this.ready();
-  //   }
 }

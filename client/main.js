@@ -8,6 +8,8 @@ import eventModule from './modules/event';
 import fileModule from './modules/file';
 import userModule from './modules/user';
 
+// load current user data
+Meteor.subscribe("user.current");
 
 // init context
 const context = initContext();
