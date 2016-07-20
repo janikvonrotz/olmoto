@@ -25,9 +25,9 @@ export default function () {
         return Meteor.users.find({});
       } else {
         return Meteor.users.find({$or: [
-            {_id: {$regex: filterText}},
-            {"profile.lastname": {$regex: filterText}},
-            {"profile.firstname": {$regex: filterText}},
+          {_id: {$regex: filterText}},
+          {"profile.lastname": {$regex: filterText}},
+          {"profile.firstname": {$regex: filterText}},
         ]})
       }
     }else{
@@ -40,7 +40,7 @@ export default function () {
       var self = this;
       var handle = Meteor.users.find(
         {"_id": { "$in": participants }},
-        { fields: { profile: 1, _id: 1 } },
+        { fields: { profile: 1 } },
       ).observeChanges({
         added: function (id, fields) {
           self.added('participants', id, fields);

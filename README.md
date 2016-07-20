@@ -17,12 +17,10 @@ Create secret events and share photos with your friends.
 
 * Event view - GoogleMaps
 * File edit - Cover change (there can be only the one)
-* Access control file: all, user: admin, event: admin
 * User - expand form
 * User - delete
 * React Helmet with viewport 1
 * Responsive File GridList
-* Log Error and Actions
 * Configure route not found
 
 # Bug
@@ -32,6 +30,7 @@ Create secret events and share photos with your friends.
 
 # Done
 
+* Access control file: all, user: admin, event: admin
 * User action logging
 * Next and Previous navigation - add componentWillReceiveProps for spinner loading
 * 2 files goto previous not working
@@ -40,8 +39,8 @@ Create secret events and share photos with your friends.
 
 # Security risk
 
-* storage_path can be overwritten.
 * user_id can be faked on client side logging.
+* authenticated user have right to update event (participation is updated client side)
 
 # Ressources
 

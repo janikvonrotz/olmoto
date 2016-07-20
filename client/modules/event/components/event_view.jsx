@@ -3,6 +3,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButto
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import moment from 'moment';
+import {can_view_component} from '/lib/access_control';
 
 class EventView extends React.Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class EventView extends React.Component {
       <div>
         <Card>
           <CardMedia
-            overlay={<CardTitle subtitle={moment(event.date).format('D MMMM') + ', ' + 
-              moment(event.start).format('hh:mm') + ' - ' + 
+            overlay={<CardTitle subtitle={moment(event.date).format('D MMMM') + ', ' +
+              moment(event.start).format('hh:mm') + ' - ' +
               moment(event.end).format('hh:mm')} />}
           >
             <img src={cover} />
@@ -92,19 +93,12 @@ class EventView extends React.Component {
            <HardwareKeyboardArrowRight />
           </FloatingActionButton>
 
-          {(()=>{
-            if(Meteor.userId()){
-              return(
-                <RaisedButton
-                  label="Edit"
-                  linkButton={true}
-                  href={event._id + "/edit"}
-                  primary={true}
-                />
-              );
-            }
-          })()}
-
+          {can_view_component('event.edit') ? <RaisedButton
+            label="Edit"
+            linkButton={true}
+            href={event._id + "/edit"}
+            primary={true}
+          /> : null }
         </Card>
       </div>
     );

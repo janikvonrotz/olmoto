@@ -3,6 +3,7 @@ import {FloatingActionButton, List, ListItem, Subheader, Divider} from 'material
 import {darkBlack} from 'material-ui/styles/colors';
 import {ContentAdd, MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
+import {can_view_component} from '/lib/access_control';
 
 class EventList extends React.Component {
   constructor(props) {
@@ -89,11 +90,11 @@ class EventList extends React.Component {
   render() {
     return (
       <div>
-        <FloatingActionButton
+        {can_view_component('event.edit') ? <FloatingActionButton
           onTouchTap={this.insert.bind(this)}
         >
           <ContentAdd />
-        </FloatingActionButton>
+        </FloatingActionButton> : null }
         {this.renderEvents()}
       </div>
     );

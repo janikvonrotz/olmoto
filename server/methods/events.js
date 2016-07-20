@@ -1,11 +1,15 @@
 import {Events} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
+import {is_allowed} from '/lib/access_control';
 
 export default function () {
   Meteor.methods({
     'event.update'(event) {
         check(event, Object)
+        if(!is_allowed('event.update', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
 
         // merge date-time
         const {date, start} = event;
@@ -18,16 +22,24 @@ export default function () {
     },
     'event.insert'(event) {
         check(event, Object)
+        if(!is_allowed('event.insert', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
         return Events.insert(event)
     },
     'event.remove'(event) {
         check(event, Object)
+        if(!is_allowed('event.remove', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
         Events.remove(event._id)
     },
     'event.getIdOf'(action, event) {
         check(action, String)
         check(event, Object)
-
+        if(!is_allowed('event.getIdOf', this.userId)){
+          throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
+        }
         function getItem (type) {
           var actions = {
             'next': () => {

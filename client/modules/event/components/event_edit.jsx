@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextField, RaisedButton, DatePicker, TimePicker, SelectField, MenuItem} from 'material-ui';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
+import {cannot_access} from '/lib/access_control';
 
 class EventEdit extends React.Component {
   constructor(props) {
@@ -27,6 +28,12 @@ class EventEdit extends React.Component {
 
   remove() {
     this.props.remove(this.props.event);
+  }
+
+  componentDidMount(){
+    if(cannot_access('event.edit')){
+      FlowRouter.go('/events')
+    }
   }
 
   render() {

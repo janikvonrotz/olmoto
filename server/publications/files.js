@@ -9,12 +9,13 @@ export default function () {
     check(filterText, Match.Optional(String));
     if(is_allowed('file.list', this.userId)){
       if (filterText === '' || !filterText) {
-          return Files.collection.find({});
+        return Files.collection.find({});
       } else {
-          return Files.collection.find({$or: [
-              {_id: {$regex: filterText}},
-              {name: {$regex: filterText}},
-          ]})
+        return Files.collection.find({$or: [
+          {_id: {$regex: filterText}},
+          {name: {$regex: filterText}},
+          {description: {$regex: filterText}},
+        ]})
       }
     }else{
       this.stop();
