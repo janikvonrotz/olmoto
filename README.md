@@ -7,6 +7,12 @@ Create secret events and share photos with your friends.
 * Mobile first ui.
 * Deployable to heroku, modulus other other Meteor supporting services.
 
+# Configure and Run
+
+* Copy `settings.json` to `settings-dev.json` and update the copy.
+* Run `npm run dev`.
+* Login with this url `http://localhost:3000/login/admin@olmoto.com/password`.
+
 # Todo
 
 * Event view - GoogleMaps
@@ -23,31 +29,16 @@ Create secret events and share photos with your friends.
 
 # Done
 
+* User action logging
 * Next and Previous navigation - add componentWillReceiveProps for spinner loading
 * 2 files goto previous not working
 * File edit - Spinner
 * User - check if is admin by method on client startup
 
-# Configure and Run
+# Security risk
 
-* Copy `settings.json` to `settings-dev.json` and update the copy.
-* Run `npm run dev`.
-* Login with this url `http://localhost:3000/login/admin@olmoto.com/password`.
-
-# notes
-
-One page to create new user
-Firstname, Lastname, Mail, Password Random.id(), Admin
-Login by url, very insecure without SSL!
-/login?mail=user@test.com?password=43k5jd4fd23gfd -> EventPage
-Redirect if logged In.
-
-For every picture select album (event).
-Add album Property for FilePage. If set filter pictures by album.
-
-Store subscriptions in user object.
-Get user list by Id
-On Participate store count of participants in event -> inc or dec
+* storage_path can be overwritten.
+* user_id can be faked on client side logging.
 
 # Ressources
 

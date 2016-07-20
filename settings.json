@@ -3,10 +3,11 @@
     "storage_path": "~/uploads"
   },
   "private": {
+    "log_user_actions": false,
     "mail_url": "smtp://localhost:1025",
     "admin_email": "admin@olmoto.com",
     "admin_password": "password",
     "app_url": "https://olmoto.com",
-    "dropbox_token": ""
+    "dropbox_token": "xxxxxx"
   }
 }
