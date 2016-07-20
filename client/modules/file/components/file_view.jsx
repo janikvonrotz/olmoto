@@ -3,7 +3,7 @@ import {FloatingActionButton, Card, CardTitle, CardMedia, RaisedButton, CardText
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
 import Spinner from './spinner.jsx';
-import {acl, is_allowed, cannot_access} from '/lib/access_control';
+import {can_view_component} from '/lib/access_control';
 
 class FileView extends React.Component {
   constructor(props) {
@@ -70,12 +70,12 @@ class FileView extends React.Component {
           </CardMedia>
           <CardText>
             {this.renderFileStatus()}
-            {cannot_access('file.edit') ? null : <RaisedButton
+            {can_view_component('file.edit') ? <RaisedButton
               label="Edit"
               linkButton={true}
-              href={file._id + "/edit"}
+              href={"/files/" + file._id + "/edit"}
               primary={true}
-            />}
+            /> : null}
             <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
               <HardwareKeyboardArrowLeft />
             </FloatingActionButton>

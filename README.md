@@ -22,10 +22,13 @@ Create secret events and share photos with your friends.
 * User - delete
 * React Helmet with viewport 1
 * Responsive File GridList
+* Log Error and Actions
+* Configure route not found
 
 # Bug
 
 * Event list - fallback for events without category or make category required
+* Do not login when creating a new user -> create user server side with method
 
 # Done
 

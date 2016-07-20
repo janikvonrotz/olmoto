@@ -5,6 +5,7 @@ import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'notie/dist/notie.css';
 import Clear from 'material-ui/svg-icons/content/clear';
+import {can_view_component} from '/lib/access_control';
 
 const styles = {
   row: {
@@ -39,7 +40,7 @@ class Layout extends React.Component {
                 <MenuItem primaryText="Close" onTouchTap={this.handleToggle.bind(this)} leftIcon={<Clear />} />
                 <MenuItem linkButton={true} href="/events" primaryText="Events" />
                 <MenuItem linkButton={true} href="/files" primaryText="Files" />
-                <MenuItem linkButton={true} href="/users" primaryText="Users" />
+                { can_view_component('user.list') ? <MenuItem linkButton={true} href="/users" primaryText="Users" /> : null }
                 { Meteor.user() ? <MenuItem linkButton={true} href="/logout" primaryText="Logout" /> : null}
               </Drawer>
               {this.props.content}

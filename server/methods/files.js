@@ -1,7 +1,7 @@
 import {Files} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check, Match} from 'meteor/check';
-import {acl, is_allowed, cannot_access} from '/lib/access_control';
+import {is_allowed} from '/lib/access_control';
 
 export default function () {
   Meteor.methods({
