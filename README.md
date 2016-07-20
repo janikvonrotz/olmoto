@@ -22,6 +22,7 @@ Create secret events and share photos with your friends.
 * React Helmet with viewport 1
 * Responsive File GridList
 * Configure route not found
+* Add Participants counter to event view and event list
 
 # Bug
 
