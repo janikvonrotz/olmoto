@@ -6,6 +6,7 @@ import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'notie/dist/notie.css';
 import Clear from 'material-ui/svg-icons/content/clear';
 import {can_view_component} from '/lib/access_control';
+import Helmet from 'react-helmet';
 
 const styles = {
   row: {
@@ -29,11 +30,17 @@ class Layout extends React.Component {
     return(
       <MuiThemeProvider>
         <div className="row" style={styles.row}>
+
+          <Helmet
+            title={Meteor.settings.public.app_name}
+            meta={[{"name": "viewport", "content": "width=device-width, initial-scale=1"}]}
+          />
+
           <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div className="box-row"></div></div>
           <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div className="box">
               <AppBar
-                title="OLMOTO"
+                title={Meteor.settings.public.app_name}
                 onTouchTap={this.handleToggle.bind(this)}
               />
               <Drawer open={this.state.open}>

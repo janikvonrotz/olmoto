@@ -32,9 +32,11 @@ Technical features
 * Responsive File GridList
 * Configure route not found
 * Add Participants counter to event view and event list
+* Load spinner for cover image
 
 # Bug
 
+* Fix user search
 * Event list - fallback for events without category or make category required
 
 # Done
