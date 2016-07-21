@@ -26,13 +26,10 @@ Technical features
 # Todo
 
 * Event view - GoogleMaps
-* File edit - Cover change (there can be only the one)
 * User - delete
-* React Helmet with viewport 1
-* Responsive File GridList
 * Configure route not found
 * Add Participants counter to event view and event list
-* Load spinner for cover image
+* Update button and position on every view and make sure structure of Cards are valid
 
 # Bug
 
@@ -41,6 +38,10 @@ Technical features
 
 # Done
 
+* File edit - Cover change (there can be only the one)
+* Responsive File GridList
+* Load spinner for cover image
+* React Helmet with viewport 1
 * Do not login when creating a new user -> create user server side with method
 * User - expand form
 * Access control file: all, user: admin, event: admin

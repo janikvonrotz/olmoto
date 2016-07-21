@@ -23,21 +23,23 @@ class FileList extends React.Component {
 
   renderGrid(){
     return (
-      <GridList
-        cellHeight={200}
-        style={styles.gridList}
-      >
-        {this.props.files.map((file) => (
-          <a key={file._id} href={"/files/" + file._id}>
-            <GridTile
-              key={file._id}
-              title={file.title}
-            >
-              <img src={file.src} />
-            </GridTile>
-          </a>
-        ))}
-      </GridList>
+      <div style={styles.root}>
+        <GridList
+          cellHeight={200}
+          style={styles.gridList}
+        >
+          {this.props.files.map((file) => (
+            <a key={file._id} href={"/files/" + file._id}>
+              <GridTile
+                key={file._id}
+                title={file.title}
+              >
+                <img src={file.src} />
+              </GridTile>
+            </a>
+          ))}
+        </GridList>
+      </div>
     )
   }
 

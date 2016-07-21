@@ -4,7 +4,6 @@ import EventView from '../components/event_view.jsx';
 
 export const composer = ({context, eventId}, onData) => {
   const {Meteor, Collections} = context();
-  console.log(eventId)
   if (Meteor.subscribe('event.item', eventId).ready() && Meteor.subscribe('file.cover', eventId).ready()) {
     const event = Collections.Events.findOne();
     var cover = Collections.Files.collection.findOne();

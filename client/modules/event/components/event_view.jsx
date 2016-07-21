@@ -4,10 +4,20 @@ import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 
 import keydown from 'react-keydown';
 import moment from 'moment';
 import {can_view_component} from '/lib/access_control';
+import Spinner from '../../file/components/spinner.jsx';
 
 class EventView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { fileStatus: 'loading' };
+  }
+
+  handleFileLoaded() {
+    this.setState({ fileStatus: 'loaded' });
+  }
+
+  handleFileLoadError() {
+    this.setState({ fileStatus: 'failed to load' });
   }
 
   addParticipant() {
@@ -30,6 +40,29 @@ class EventView extends React.Component {
     this.props.goTo("previous", this.props.event);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.event._id != nextProps.event._id){
+      this.setState({
+        fileStatus: 'loading'
+      })
+    }
+  }
+
+  renderFileStatus(){
+    var actions = {
+      'loading': () => {
+        return (<Spinner />);
+      },
+      'loaded': () => {
+        return null;
+      },
+      'failed to load': () => {
+        return (<p>{this.state.fileStatus}</p>);
+      },
+    };
+    return actions[this.state.fileStatus]();
+  }
+
   render() {
     const {event, participants, cover} = this.props
     if (!event) {
@@ -44,8 +77,15 @@ class EventView extends React.Component {
               moment(event.start).format('hh:mm') + ' - ' +
               moment(event.end).format('hh:mm')} />}
           >
-            <img src={cover} />
+          <img
+            src={cover}
+            onLoad={this.handleFileLoaded.bind(this)}
+            onError={this.handleFileLoadError.bind(this)}
+          />
           </CardMedia>
+          <CardText>
+            {this.renderFileStatus()}
+          </CardText>
           <CardActions>
           {(()=>{
             if(event.participants.includes(Meteor.userId())){

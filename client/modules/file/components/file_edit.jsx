@@ -87,7 +87,6 @@ class FileEdit extends React.Component {
     const {file} = this.state;
     const {events} = this.props;
     if(!file){return <div></div>}
-    console.log(file)
     return (
       <div>
         <Card>

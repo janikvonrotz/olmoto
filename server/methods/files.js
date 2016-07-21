@@ -10,6 +10,12 @@ export default function () {
         if(!is_allowed('file.update', this.userId)){
           throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
         }
+
+        // cover must be unique
+        if(file.albumId){
+          Files.collection.update({albumId: file.albumId}, {$set: {albumId: ""}}, {multi: true})
+        }
+
         var fileId = file._id;
         delete file._id;
         Files.collection.update(fileId, {$set: file})

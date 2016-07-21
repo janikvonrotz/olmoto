@@ -37,6 +37,8 @@ export default {
     Meteor.call('file.update', file, (err, res) => {
         if (err) {
           notification.alert(3, err.reason, 2.5);
+        } else {
+          notification.alert(1, 'File updated.', 2.5);
         }
     })
   },
