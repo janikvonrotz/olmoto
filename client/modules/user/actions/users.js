@@ -10,13 +10,15 @@ export default {
         notification.alert(1, 'You successfully logged in.', 2.5);
         FlowRouter.go('/events');
       }
-    });
+    })
   },
   insert({Meteor, FlowRouter}, user){
-    Accounts.createUser(user, (err, res) => {
-     if(err){
-       notification.alert(3, err.message, 2.5);
-     }
-   });
+    Meteor.call('user.insert', user, (err, res) => {
+      if (err) {
+        notification.alert(3, err.reason, 2.5)
+      } else {
+        notification.alert(1, 'User added, inivation email has been sent.', 2.5)
+      }
+    })
   }
 }

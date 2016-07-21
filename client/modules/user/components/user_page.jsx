@@ -1,7 +1,7 @@
 import React from 'react';
 import UserList from '../containers/user_list';
 import {TextField, FloatingActionButton, Paper, Divider, Checkbox, RaisedButton} from 'material-ui';
-import {ContentAdd} from 'material-ui/svg-icons';
+import {ContentAdd, ContentClear } from 'material-ui/svg-icons';
 
 const styles = {
   textfield: {
@@ -28,7 +28,7 @@ class UserPage extends React.Component {
   }
 
   toggleInsertForm() {
-
+    this.setState({ showInsertForm: !this.state.showInsertForm });
   }
 
   insert() {
@@ -57,9 +57,9 @@ class UserPage extends React.Component {
         <FloatingActionButton
           onTouchTap={this.toggleInsertForm.bind(this)}
         >
-          <ContentAdd />
+          { this.state.showInsertForm ? <ContentClear /> : <ContentAdd /> }
         </FloatingActionButton>
-        <Paper zDepth={2}>
+        { this.state.showInsertForm ? <Paper zDepth={2}>
           <TextField ref="firstname" hintText="First name" style={styles.textfield} type="text" underlineShow={false} />
           <Divider />
           <TextField ref="lastname" hintText="Last name" style={styles.textfield} type="text" underlineShow={false} />
@@ -79,7 +79,7 @@ class UserPage extends React.Component {
              onTouchTap={this.insert.bind(this)}
              primary={true}
            />
-        </Paper>
+        </Paper> : null }
         <UserList filterText={this.state.filterText} />
       </div>
     );

@@ -1,11 +1,16 @@
 # olmoto
 
-Create secret events and share photos with your friends.
+Create events and share photos with your friends.
 
 * Stores photos on Dropbox.
 * Invite users by email.
-* Mobile first ui.
-* Deployable to heroku, modulus other other Meteor supporting services.
+
+Technical features
+
+* Access control for methods, publications and routing.
+* Ready for deployment to heroku.
+* Mobile first ui with material design.
+* Fulltext search everywhere.
 
 # Configure and Run
 
@@ -13,11 +18,15 @@ Create secret events and share photos with your friends.
 * Run `npm run dev`.
 * Login with this url `http://localhost:3000/login/admin@olmoto.com/password`.
 
+# Deploy
+
+* Install heroku toolbelt and make it ready for deployment.
+* Run `npm run heroku`.
+
 # Todo
 
 * Event view - GoogleMaps
 * File edit - Cover change (there can be only the one)
-* User - expand form
 * User - delete
 * React Helmet with viewport 1
 * Responsive File GridList
@@ -27,10 +36,11 @@ Create secret events and share photos with your friends.
 # Bug
 
 * Event list - fallback for events without category or make category required
-* Do not login when creating a new user -> create user server side with method
 
 # Done
 
+* Do not login when creating a new user -> create user server side with method
+* User - expand form
 * Access control file: all, user: admin, event: admin
 * User action logging
 * Next and Previous navigation - add componentWillReceiveProps for spinner loading
