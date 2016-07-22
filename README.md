@@ -23,6 +23,10 @@ Technical features
 * Install heroku toolbelt and make it ready for deployment.
 * Run `npm run heroku`.
 
+# Nice to have
+
+* Auto delete old cover
+
 # Todo
 
 * Event view - GoogleMaps
@@ -30,11 +34,11 @@ Technical features
 * Configure route not found
 * Add Participants counter to event view and event list
 * Update button and position on every view and make sure structure of Cards are valid
+* Add file loader component (Img src)
 
 # Bug
 
 * Fix user search
-* Event list - fallback for events without category or make category required
 
 # Done
 

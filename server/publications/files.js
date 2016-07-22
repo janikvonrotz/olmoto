@@ -34,9 +34,10 @@ export default function () {
   Meteor.publish('file.cover', function (albumId) {
     check(albumId, String);
     if(is_allowed('file.cover', this.userId)){
-      var result = Files.collection.find(
-        {"albumId": albumId}
-      );
+      var result = Files.collection.find({
+        "meta.albumId": albumId,
+        "meta.usage": "cover"
+      });
       return result;
   }else{
     this.stop();

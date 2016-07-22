@@ -7,7 +7,11 @@ export default {
         var uploadInstance = Files.insert({
           file: file,
           streams: 'dynamic',
-          chunkSize: 'dynamic'
+          chunkSize: 'dynamic',
+          meta: {
+            usage: file.usage || "",
+            albumId: file.albumId
+          }
         }, false);
 
         uploadInstance.on('start', function() {
@@ -21,12 +25,6 @@ export default {
             notification.alert(3, error.reason, 2.5);
           } else {
             notification.alert(1, 'Successfully uploaded.', 2.5);
-            fileObj.albumId = file.albumId
-            Meteor.call('file.update', fileObj, (error, res) => {
-                if (error) {
-                  notification.alert(3, error.reason, 2.5);
-                }
-            })
           }
         });
 

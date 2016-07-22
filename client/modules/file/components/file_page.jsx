@@ -32,7 +32,6 @@ class FilePage extends React.Component {
   }
 
   upload(event){
-    console.log(event.target.files);
     _.map(event.target.files, (file) => {
       file.albumId = this.props.albumId
       this.props.upload(file);

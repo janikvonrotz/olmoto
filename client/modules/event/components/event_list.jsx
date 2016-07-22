@@ -16,7 +16,7 @@ class EventList extends React.Component {
       date: new Date(),
       start: new Date(),
       end: new Date(),
-      category: '',
+      category: 'food',
       files: [],
       participants: [],
     })
