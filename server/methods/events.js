@@ -20,7 +20,6 @@ export default function () {
         }
         event.start = new Date(date.getFullYear(), date.getMonth(), date.getDate(), start.getHours(), start.getMinutes(), 0);
         event.date.setHours(0,0,0,0);
-            start.getHours(), start.getMinutes(), start.getSeconds());
 
         var eventId = event._id;
         delete event._id;
