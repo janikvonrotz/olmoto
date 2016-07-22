@@ -12,8 +12,14 @@ export default function () {
         }
 
         // merge date-time
-        const {date, start} = event;
-        event.date = new Date(date.getFullYear(), date.getMonth(), date.getDate(),
+        const {date, start, end} = event;
+        if (event.start < event.end) {
+          event.end = new Date(date.getFullYear(), date.getMonth(), date.getDate(), end.getHours(), end.getMinutes(), 0);
+        } else {
+          event.end = new Date(date.getFullYear(), date.getMonth(), (date.getDate() + 1), end.getHours(), end.getMinutes(), 0);
+        }
+        event.start = new Date(date.getFullYear(), date.getMonth(), date.getDate(), start.getHours(), start.getMinutes(), 0);
+        event.date.setHours(0,0,0,0);
             start.getHours(), start.getMinutes(), start.getSeconds());
 
         var eventId = event._id;
