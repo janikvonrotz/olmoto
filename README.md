@@ -42,6 +42,8 @@ Technical features
 
 # Done
 
+* Ablums for every event, add picture type cover -> move it to different subfolder on dropbox
+* Event list - fallback for events without category or make category required
 * File edit - Cover change (there can be only the one)
 * Responsive File GridList
 * Load spinner for cover image
