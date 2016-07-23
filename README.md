@@ -37,7 +37,7 @@ Technical features
 
 # Done
 
-* User delete and its participations
+* User delete
 * Configure route not found
 * Delete old cover when adding a new
 * Add file loader component (Img src)
