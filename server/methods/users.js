@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {is_allowed} from '/lib/access_control';
 
+
 export default function () {
   Meteor.methods({
     'user.insert'(user) {
@@ -17,6 +18,7 @@ export default function () {
           throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
         }
         Meteor.users.remove(user._id)
+        // Events.update({ _id: id },{ $slice: { participants: user._id }})
     },
   });
 }

@@ -23,17 +23,13 @@ Technical features
 * Install heroku toolbelt and make it ready for deployment.
 * Run `npm run heroku`.
 
-# Nice to have
-
-* Auto delete old cover
-
 # Todo
 
 * Event view - GoogleMaps
 * Add Participants counter to event view and event list
 * Update button and position on every view and make sure structure of Cards are valid
 * Theme the app
-* User delete and its participations
+* On user delete remove participations in events
 
 # Bug
 
@@ -41,6 +37,7 @@ Technical features
 
 # Done
 
+* User delete and its participations
 * Configure route not found
 * Delete old cover when adding a new
 * Add file loader component (Img src)

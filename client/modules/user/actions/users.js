@@ -20,5 +20,14 @@ export default {
         notification.alert(1, 'User added, inivation email has been sent.', 2.5)
       }
     })
+  },
+  remove({Meteor, FlowRouter}, user){
+    Meteor.call('user.remove', user, (err, res) => {
+      if (err) {
+        notification.alert(3, err.reason, 2.5)
+      } else {
+        notification.alert(1, 'User has been removed.', 2.5)
+      }
+    })
   }
 }
