@@ -2,21 +2,13 @@ import React from 'react';
 import {FloatingActionButton, Card, CardTitle, CardMedia, RaisedButton, CardText} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
-import Spinner from './spinner.jsx';
+import ImageLoader from '../../core/components/image_loader.jsx';
 import {can_view_component} from '/lib/access_control';
 
 class FileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = { fileStatus: 'loading' };
-  }
-
-  handleFileLoaded() {
-    this.setState({ fileStatus: 'loaded' });
-  }
-
-  handleFileLoadError() {
-    this.setState({ fileStatus: 'failed to load' });
   }
 
   @keydown( 'right' )
@@ -29,29 +21,6 @@ class FileView extends React.Component {
     this.props.goTo("previous", this.props.file);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.file._id != nextProps.file._id){
-      this.setState({
-        fileStatus: 'loading'
-      })
-    }
-  }
-
-  renderFileStatus(){
-    var actions = {
-      'loading': () => {
-        return (<Spinner />);
-      },
-      'loaded': () => {
-        return null;
-      },
-      'failed to load': () => {
-        return (<p>{this.state.fileStatus}</p>);
-      },
-    };
-    return actions[this.state.fileStatus]();
-  }
-
   render() {
     const {file} = this.props;
     if(!file){return <div></div>}
@@ -62,14 +31,11 @@ class FileView extends React.Component {
           <CardMedia
             overlay={<CardTitle title={file.name} subtitle={file.description} />}
           >
-            <img
+            <ImageLoader
               src={file.src}
-              onLoad={this.handleFileLoaded.bind(this)}
-              onError={this.handleFileLoadError.bind(this)}
             />
           </CardMedia>
           <CardText>
-            {this.renderFileStatus()}
             {can_view_component('file.edit') ? <RaisedButton
               label="Edit"
               linkButton={true}

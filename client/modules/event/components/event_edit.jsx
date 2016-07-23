@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextField, RaisedButton, DatePicker, TimePicker, SelectField, MenuItem, Card, CardTitle, CardText, CardMedia} from 'material-ui';
 import {cannot_access} from '/lib/access_control';
-import Spinner from '../../file/components/spinner.jsx';
+import ImageLoader from '../../core/components/image_loader.jsx';
 
 const styles = {
   button: {
@@ -24,14 +24,12 @@ class EventEdit extends React.Component {
     super(props);
 
     this.state = {
-      category: props.event.category,
-      fileStatus: 'loading'
+      category: props.event.category
     };
   }
 
   updateField(name, event, value) {
     this.props.event[name] = value;
-    console.log(this.props.event)
   }
 
   updateSelectField(name, event, index, value){
@@ -57,33 +55,10 @@ class EventEdit extends React.Component {
     });
   }
 
-  handleFileLoaded() {
-    this.setState({ fileStatus: 'loaded' });
-  }
-
-  handleFileLoadError() {
-    this.setState({ fileStatus: 'failed to load' });
-  }
-
   componentDidMount(){
     if(cannot_access('event.edit')){
       FlowRouter.go('/events')
     }
-  }
-
-  renderFileStatus(){
-    var actions = {
-      'loading': () => {
-        return (<Spinner />);
-      },
-      'loaded': () => {
-        return null;
-      },
-      'failed to load': () => {
-        return (<p>{this.state.fileStatus}</p>);
-      },
-    };
-    return actions[this.state.fileStatus]();
   }
 
   render() {
@@ -91,22 +66,18 @@ class EventEdit extends React.Component {
     if (!event) {
         return <div></div>
     }
-    console.log(event)
     return (
       <div>
         <Card>
           <CardMedia>
-          <img
+          <ImageLoader
             src={cover}
-            onLoad={this.handleFileLoaded.bind(this)}
-            onError={this.handleFileLoadError.bind(this)}
           />
           </CardMedia>
             <CardTitle
                 title={event.title}
             />
             <CardText>
-              {this.renderFileStatus()}
               <RaisedButton
                 label="Choose Files"
                 labelPosition="before"

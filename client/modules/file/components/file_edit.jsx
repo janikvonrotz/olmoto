@@ -2,7 +2,7 @@ import React from 'react';
 import {TextField, FloatingActionButton, SelectField, MenuItem, RaisedButton, Card, CardMedia, CardTitle, CardText} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight} from 'material-ui/svg-icons';
 import keydown from 'react-keydown';
-import Spinner from './spinner.jsx'
+import ImageLoader from '../../core/components/image_loader.jsx';
 import {cannot_access} from '/lib/access_control';
 
 class FileEdit extends React.Component {
@@ -10,17 +10,8 @@ class FileEdit extends React.Component {
     super(props);
 
     this.state = {
-      file: props.file,
-      fileStatus: 'loading'
+      file: props.file
     }
-  }
-
-  handleFileLoaded() {
-    this.setState({ fileStatus: 'loaded' });
-  }
-
-  handleFileLoadError() {
-    this.setState({ fileStatus: 'failed to load' });
   }
 
   @keydown( 'right' )
@@ -53,26 +44,10 @@ class FileEdit extends React.Component {
     this.props.remove(this.state.file);
   }
 
-  renderFileStatus(){
-    var actions = {
-      'loading': () => {
-        return (<Spinner />);
-      },
-      'loaded': () => {
-        return null;
-      },
-      'failed to load': () => {
-        return (<p>{this.state.fileStatus}</p>);
-      },
-    };
-    return actions[this.state.fileStatus]();
-  }
-
   componentWillReceiveProps(nextProps){
     if(this.props.file._id != nextProps.file._id){
       this.setState({
-        file: nextProps.file,
-        fileStatus: 'loading'
+        file: nextProps.file
       })
     }
   }
@@ -93,15 +68,11 @@ class FileEdit extends React.Component {
           <CardMedia
             overlay={<CardTitle title={file.name} subtitle={file.description} />}
           >
-            <img
+            <ImageLoader
               src={file.src}
-              onLoad={this.handleFileLoaded.bind(this)}
-              onError={this.handleFileLoadError.bind(this)}
             />
           </CardMedia>
           <CardText>
-            {this.renderFileStatus()}
-
             <TextField
               value={file.name}
               floatingLabelText="Name"

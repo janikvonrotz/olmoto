@@ -34,7 +34,7 @@ Technical features
 * Configure route not found
 * Add Participants counter to event view and event list
 * Update button and position on every view and make sure structure of Cards are valid
-* Add file loader component (Img src)
+* Delete old cover when adding a new
 
 # Bug
 
@@ -42,6 +42,7 @@ Technical features
 
 # Done
 
+* Add file loader component (Img src)
 * Ablums for every event, add picture type cover -> move it to different subfolder on dropbox
 * Event list - fallback for events without category or make category required
 * File edit - Cover change (there can be only the one)
