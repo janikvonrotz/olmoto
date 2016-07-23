@@ -30,11 +30,9 @@ Technical features
 # Todo
 
 * Event view - GoogleMaps
-* User - delete
 * Configure route not found
 * Add Participants counter to event view and event list
 * Update button and position on every view and make sure structure of Cards are valid
-* Delete old cover when adding a new
 
 # Bug
 
@@ -42,6 +40,8 @@ Technical features
 
 # Done
 
+* User - delete
+* Delete old cover when adding a new
 * Add file loader component (Img src)
 * Ablums for every event, add picture type cover -> move it to different subfolder on dropbox
 * Event list - fallback for events without category or make category required

@@ -12,8 +12,8 @@ export default function () {
         }
 
         // cover must be unique
-        if(file.albumId){
-          Files.collection.update({albumId: file.albumId}, {$set: {albumId: ""}}, {multi: true})
+        if(file.meta && file.meta.albumId && file.meta.usage === 'cover'){
+          Files.remove({_id: {$ne: file._id}, 'meta.albumId': file.meta.albumId, 'meta.usage': 'cover'})
         }
 
         var fileId = file._id;
@@ -61,6 +61,6 @@ export default function () {
 
         // get item
         return getItem(action)._id;
-    },
+    }
   });
 }

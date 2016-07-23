@@ -10,7 +10,7 @@ export default {
           chunkSize: 'dynamic',
           meta: {
             usage: file.usage || "",
-            albumId: file.albumId
+            albumId: file.albumId || ""
           }
         }, false);
 
@@ -25,6 +25,15 @@ export default {
             notification.alert(3, error.reason, 2.5);
           } else {
             notification.alert(1, 'Successfully uploaded.', 2.5);
+
+            // make sure cover is unique by running updated method
+            if(file.usage && file.usage === 'cover'){
+              Meteor.call('file.update', fileObj, (err, res) => {
+                  if (err) {
+                    notification.alert(3, err.reason, 2.5);
+                  }
+              })
+            }
           }
         });
 
