@@ -30,6 +30,7 @@ Technical features
 * Update button and position on every view and make sure structure of Cards are valid
 * Theme the app
 * On user delete remove participations in events
+* Add Roboto font
 
 # Bug
 
@@ -37,6 +38,7 @@ Technical features
 
 # Done
 
+* Changing album of covers in file list has no effect
 * User delete
 * Configure route not found
 * Delete old cover when adding a new

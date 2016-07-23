@@ -26,7 +26,7 @@ class FileEdit extends React.Component {
 
   updateField(name, event, value) {
     var file = this.state.file;
-    if(name === 'albumId'){
+    if(['albumId'].indexOf(name) > -1){
       file.meta[name] = value;
     }else{
       file[name] = value;
@@ -36,7 +36,11 @@ class FileEdit extends React.Component {
 
   updateSelectField(name, event, index, value){
     var file = this.state.file;
-    file[name] = value;
+    if(['albumId'].indexOf(name) > -1){
+      file.meta[name] = value;
+    }else{
+      file[name] = value;
+    }
     this.setState({file: file})
   }
 
@@ -90,7 +94,7 @@ class FileEdit extends React.Component {
             />
 
             <SelectField
-              value={file.albumId}
+              value={file.meta.albumId}
               onChange={this.updateSelectField.bind(this, 'albumId')}
               floatingLabelText="Album"
             >
