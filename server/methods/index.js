@@ -1,6 +1,7 @@
 import files from './files';
 import users from './users';
 import logs from './logs';
+import pages from './pages';
 import events from './events';
 
 export default function () {
@@ -8,4 +9,5 @@ export default function () {
   files();
   users();
   logs();
+  pages();
 }

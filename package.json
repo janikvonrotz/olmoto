@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.5",
+    "draft-js": "^0.7.0",
     "dropbox": "^0.10.3",
     "flexboxgrid": "^6.3.0",
     "mantra-core": "^1.2.0",
+    "marked": "^0.3.5",
     "material-ui": "^0.15.1",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.14.1",

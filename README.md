@@ -3,7 +3,7 @@
 Create events and share photos with your friends.
 
 * Stores photos on Dropbox.
-* Invite users by email.
+* Invite users simply by email.
 
 Technical features
 
@@ -11,6 +11,8 @@ Technical features
 * Ready for deployment to heroku.
 * Mobile first ui with material design.
 * Fulltext search everywhere.
+* File upload with Meteor-Files.
+* Keyboard navigation in single views.
 
 # Configure and Run
 
@@ -31,6 +33,8 @@ Technical features
 * Theme the app
 * On user delete remove participations in events
 * Add Roboto font
+* Filter old events
+* Pages -> Page title="home" -> if not exist create page and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 
 # Bug
 

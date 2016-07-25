@@ -1,11 +1,9 @@
 import React from 'react';
+import Page from './page.jsx';
 
 const Home = () => (
   <div>
-    <h1>Home</h1>
-    <p>
-      Welcome to OLMOTO.
-    </p>
+    <Page title="Home" />
   </div>
 );
 

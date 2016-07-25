@@ -2,7 +2,7 @@ import {Files} from '/lib/collections';
 import * as notification from 'notie';
 
 export default {
-  upload({Meteor}, file) {
+  upload({Meteor}, file, callback) {
     if (file) {
         var uploadInstance = Files.insert({
           file: file,
@@ -33,6 +33,10 @@ export default {
                     notification.alert(3, err.reason, 2.5);
                   }
               })
+            }
+
+            if(callback){
+              callback(fileObj)
             }
           }
         });
