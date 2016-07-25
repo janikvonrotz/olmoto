@@ -10,8 +10,6 @@ const styles = {
     padding: '20px',
     backgroundColor: darkBlack,
     color: grey400,
-    fontSize: '14px',
-    fontFamily: 'Monaco',
   },
   preview: {
 
@@ -43,7 +41,7 @@ class MarkdownEditor extends React.Component {
     });
 
     // if onChange is set call it
-    this.props.onChange && this.props.onChange(text, this.props.name)
+    this.props.onChange && this.props.onChange(this.props.name, text)
   }
 
   // upload file
@@ -62,20 +60,23 @@ class MarkdownEditor extends React.Component {
       if(!selection){selection = selectionState;}
       const cs = Modifier.insertText(contentState, selection, url)
       const es = EditorState.push(editorState, cs, 'insert-fragment');
-      this.setState({editorState: es});
+
+      // update state
+      this.update(es)
     })
   }
 
   handlePastedFiles(files){
     _.each(files, (file) => {
       file.usage = this.props.fileUsage || '';
+      file.name = `clipboard.${file.type.split("/")[1]}`
       this.upload(file);
     });
   }
 
   handleDroppedFiles(selection, files){
     _.each(files, (file) => {
-      file.usage = this.props.fileUsage;
+      file.usage = this.props.fileUsage || '';
       this.upload(file, selection);
     });
   }

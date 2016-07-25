@@ -33,11 +33,11 @@ class UserList extends React.Component {
                   primaryText={user.profile.firstname + " " + user.profile.lastname}
                   secondaryText={<p>{user.emails[0].address}</p>}
                   secondaryTextLines={1}
-                  rightIconButton={            <RaisedButton
-                                label="Remove"
-                                onTouchTap={this.remove.bind(this, user)}
-                                secondary={true}
-                              />}
+                  rightIconButton={<RaisedButton
+                    label="Remove"
+                    onTouchTap={this.remove.bind(this, user)}
+                    secondary={true}
+                  />}
                 />
               );
             })

@@ -34,7 +34,7 @@ Technical features
 * On user delete remove participations in events
 * Add Roboto font
 * Filter old events
-* Pages -> Page title="home" -> if not exist create page and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
+* Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 
 # Bug
 
@@ -68,6 +68,9 @@ Technical features
 * authenticated user have right to update event (participation is updated client side)
 
 # Ressources
+
+Wait for user to load
+http://stackoverflow.com/questions/34751753/how-to-make-flowrouter-wait-for-users-collection-on-the-client
 
 Meteor environment variables
 https://www.eventedmind.com/items/meteor-what-is-meteor-bindenvironment

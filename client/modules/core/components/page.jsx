@@ -1,7 +1,7 @@
 import React from 'react';
 import {FloatingActionButton} from 'material-ui';
 import MarkdownEditor from '../containers/markdown_editor';
-import {ContentCreate, ContentSave} from 'material-ui/svg-icons';
+import {ContentCreate, ContentSave, ContentClear} from 'material-ui/svg-icons';
 import {can_view_component} from '/lib/access_control';
 import {marked, customRender} from '../libs/marked';
 
@@ -9,36 +9,62 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {editing: false}
+    this.state = {
+      editing: false,
+      text: "# test"
+    }
   }
 
-  toggleEditing(){
-    const {editing} = this.state
-    const {title} = this.props
+  showEditor(){
+    this.setState({editing: true});
+  }
 
-    // save if is in edit mode
-    if(editing){
-      console.log(this.refs.editor)
-      // var text = this.refs.editor.getValue()
-      // conosle.log(text);
-    }
-    this.setState({editing: !editing});
+  closeEditor(){
+    this.setState({
+      editing: false,
+      text: "# test"
+    });
+  }
+
+  update(){
+    this.setState({editing: false});
+    console.log("save")
+  }
+
+  handleChange(name, value){
+    this.setState({text: value});
   }
 
   render() {
-    const {editing} = this.state
+    const {editing, text} = this.state
     const {title} = this.props
     return (
       <div>
-        <h1>{title}</h1>
-        {can_view_component('page.edit') ? <FloatingActionButton
-          onTouchTap={this.toggleEditing.bind(this)}
+        {!editing && can_view_component('page.edit') ? <FloatingActionButton
+          onTouchTap={this.showEditor.bind(this)}
         >
-          {editing ? <ContentSave /> : <ContentCreate />}
+          <ContentCreate />
         </FloatingActionButton> : null }
+
+        {editing ? <FloatingActionButton
+          onTouchTap={this.update.bind(this)}
+        >
+          <ContentSave />
+        </FloatingActionButton> : null}
+
+        {editing ? <FloatingActionButton
+          onTouchTap={this.closeEditor.bind(this)}
+        >
+          <ContentClear />
+        </FloatingActionButton> : null}
+
         {editing ?
-          <MarkdownEditor ref="editor" text="test" fileUsage="page" /> :
-          <div dangerouslySetInnerHTML={{__html: marked("# test", {renderer: customRender})}} />
+          <MarkdownEditor
+            name="content"
+            onChange={this.handleChange.bind(this)}
+            text={text}
+            fileUsage="page" /> :
+          <div dangerouslySetInnerHTML={{__html: marked(text, {renderer: customRender})}} />
         }
       </div>
     );

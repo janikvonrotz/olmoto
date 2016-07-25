@@ -8,9 +8,6 @@ import eventModule from './modules/event';
 import fileModule from './modules/file';
 import userModule from './modules/user';
 
-// load current user data
-Meteor.subscribe("user.current");
-
 // init context
 const context = initContext();
 injectTapEventPlugin();
@@ -21,5 +18,14 @@ app.loadModule(coreModule);
 app.loadModule(eventModule);
 app.loadModule(fileModule);
 app.loadModule(userModule);
-
 app.init();
+
+// make sure FlowRouter only runs when user is loaded
+Tracker.autorun(() => {
+  if(!Meteor.subscribe("user.current").ready()){
+    FlowRouter.wait();
+  }
+  if(Meteor.subscribe("user.current").ready() && !FlowRouter._initialized) {
+    FlowRouter.initialize();
+  };
+});
