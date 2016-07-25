@@ -74,9 +74,6 @@ class EventEdit extends React.Component {
             src={cover}
           />
           </CardMedia>
-            <CardTitle
-                title={event.title}
-            />
             <CardText>
               <RaisedButton
                 label="Choose Files"

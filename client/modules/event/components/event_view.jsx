@@ -55,23 +55,20 @@ class EventView extends React.Component {
           >
             <ImageLoader src={cover} />
           </CardMedia>
-          <CardText>
-          </CardText>
-          <CardActions>
-          {(()=>{
-            if(event.participants.includes(Meteor.userId())){
-              return(<RaisedButton secondary={true} label="Nahh, not for me, bro..." onTouchTap={this.removeParticipant.bind(this)}/>);
-            }else{
-              return(<RaisedButton primary={true} label="Sign me up for that shit!" onTouchTap={this.addParticipant.bind(this)}/>);
-            }
-          })()}
-          </CardActions>
           <CardTitle
             title={event.title}
           />
           <CardText>
-            {event.description}
+            {(()=>{
+              if(event.participants.includes(Meteor.userId())){
+                return(<RaisedButton secondary={true} label="Nahh, not for me, bro..." onTouchTap={this.removeParticipant.bind(this)}/>);
+              }else{
+                return(<RaisedButton primary={true} label="Sign me up for that shit!" onTouchTap={this.addParticipant.bind(this)}/>);
+              }
+            })()}
+            <p>{event.description}</p>
           </CardText>
+
           <CardTitle
             subtitle="Participants"
             actAsExpander={true}
@@ -80,36 +77,41 @@ class EventView extends React.Component {
           <CardText
             expandable={true}
           >
-          <List>
-            {(() => {
-              return participants.map((user) => {
-                return (
-                  <ListItem key={user._id}
-                    primaryText={user.profile.firstname + " " + user.profile.lastname}
-                  />
-                );
-              })
-            })()}
-          </List>
+            <List>
+              {(() => {
+                return participants.map((user) => {
+                  return (
+                    <ListItem key={user._id}
+                      primaryText={user.profile.firstname + " " + user.profile.lastname}
+                    />
+                  );
+                })
+              })()}
+            </List>
           </CardText>
-          <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
-            <HardwareKeyboardArrowLeft />
-          </FloatingActionButton>
 
-          <FloatingActionButton linkButton={true} href="/events">
-            <ActionList />
-          </FloatingActionButton>
+          <CardText>
 
-          <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
-           <HardwareKeyboardArrowRight />
-          </FloatingActionButton>
+            <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
+              <HardwareKeyboardArrowLeft />
+            </FloatingActionButton>
 
-          {can_view_component('event.edit') ? <RaisedButton
-            label="Edit"
-            linkButton={true}
-            href={event._id + "/edit"}
-            primary={true}
-          /> : null }
+            <FloatingActionButton linkButton={true} href="/events">
+              <ActionList />
+            </FloatingActionButton>
+
+            <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
+             <HardwareKeyboardArrowRight />
+            </FloatingActionButton>
+
+            {can_view_component('event.edit') ? <RaisedButton
+              label="Edit"
+              linkButton={true}
+              href={event._id + "/edit"}
+              primary={true}
+            /> : null }
+
+          </CardText>
         </Card>
       </div>
     );
