@@ -23,7 +23,8 @@ Technical features
 # Deploy
 
 * Install heroku toolbelt and make it ready for deployment.
-* Run `npm run heroku`.
+* Copy `settings.json` to `settings-prod.json` and update the copy.
+* Run `npm run deploy`.
 
 # Todo
 
