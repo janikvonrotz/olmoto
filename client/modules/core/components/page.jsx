@@ -1,7 +1,7 @@
 import React from 'react';
 import {FloatingActionButton} from 'material-ui';
 import MarkdownEditor from '../containers/markdown_editor';
-import {ContentCreate, ContentSave, ContentClear} from 'material-ui/svg-icons';
+import {ContentCreate, ActionDone, ContentClear} from 'material-ui/svg-icons';
 import {can_view_component} from '/lib/access_control';
 import {marked, customRender} from '../libs/marked';
 
@@ -49,7 +49,7 @@ class Page extends React.Component {
         {editing ? <FloatingActionButton
           onTouchTap={this.update.bind(this)}
         >
-          <ContentSave />
+          <ActionDone />
         </FloatingActionButton> : null}
 
         {editing ? <FloatingActionButton
