@@ -8,10 +8,10 @@ import {marked, customRender} from '../libs/marked';
 class Page extends React.Component {
   constructor(props) {
     super(props);
-
+    const {page} = props
     this.state = {
       editing: false,
-      text: "# test"
+      text: page.content || ''
     }
   }
 
@@ -22,13 +22,15 @@ class Page extends React.Component {
   closeEditor(){
     this.setState({
       editing: false,
-      text: "# test"
+      text: this.props.page.content
     });
   }
 
   update(){
+    var {page} = this.props
     this.setState({editing: false});
-    console.log("save")
+    page.content = this.state.text
+    this.props.update(page)
   }
 
   handleChange(name, value){
@@ -36,8 +38,9 @@ class Page extends React.Component {
   }
 
   render() {
+    const {page} = this.props
     const {editing, text} = this.state
-    const {title} = this.props
+    if(!page){return (<div></div>)}
     return (
       <div>
         {!editing && can_view_component('page.edit') ? <FloatingActionButton

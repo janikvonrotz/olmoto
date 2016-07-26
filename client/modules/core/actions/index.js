@@ -1,5 +1,5 @@
-import Pages from './pages';
+import pages from './pages';
 
 export default {
-  Pages
+  pages
 };

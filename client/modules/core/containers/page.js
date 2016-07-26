@@ -2,14 +2,17 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import Page from '../components/page.jsx';
 
-export const composer = ({context}, onData) => {
+export const composer = ({context, title}, onData) => {
   const {Meteor, Collections} = context();
-
-  onData(null, {});
+  if (Meteor.subscribe('page.item', title).ready()) {
+    const page = Collections.Pages.findOne();
+    onData(null, {page})
+  }
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  update: actions.pages.update,
 });
 
 export default composeAll(

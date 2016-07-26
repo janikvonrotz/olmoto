@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from './page.jsx';
+import Page from '../containers/page';
 
 const Home = () => (
   <div>

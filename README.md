@@ -29,12 +29,10 @@ Technical features
 
 * Event view - GoogleMaps
 * Add Participants counter to event view and event list
-* Update button and position on every view and make sure structure of Cards are valid
-* Theme the app
+* Theme the app and MarkdownEditor
 * On user delete remove participations in events
 * Add Roboto font
 * Filter old events
-* Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 
 # Bug
 
@@ -42,6 +40,8 @@ Technical features
 
 # Done
 
+* Update button and position on every view and make sure structure of Cards are valid
+* Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 * Changing album of covers in file list has no effect
 * User delete
 * Configure route not found
