@@ -1,12 +1,28 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {AppBar, Drawer, MenuItem} from 'material-ui';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { indigo900, amber500 } from 'material-ui/styles/colors';
+import { AppBar, Drawer, MenuItem } from 'material-ui';
 import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'notie/dist/notie.css';
 import Clear from 'material-ui/svg-icons/content/clear';
-import {can_view_component} from '/lib/access_control';
+import { can_view_component } from '/lib/access_control';
 import Helmet from 'react-helmet';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accentColor1: indigo900,
+  },
+  fontFamily: 'Helvetica',
+  appBar: {
+    color: indigo900,
+    textColor: amber500,
+  },
+  raisedButton: {
+    primaryColor: amber500,
+  }
+});
 
 const styles = {
   row: {
@@ -28,7 +44,7 @@ class Layout extends React.Component {
 
   render(){
     return(
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="row" style={styles.row}>
 
           <Helmet
