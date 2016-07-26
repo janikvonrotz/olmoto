@@ -1,25 +1,12 @@
 import React from 'react';
-import {FloatingActionButton, List, ListItem, Subheader, Divider} from 'material-ui';
+import {List, ListItem, Subheader, Divider} from 'material-ui';
 import {darkBlack} from 'material-ui/styles/colors';
-import {ContentAdd, MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
+import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
-import {can_view_component} from '/lib/access_control';
 
 class EventList extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  insert() {
-    this.props.insert({
-      title: 'untitled',
-      date: new Date(),
-      start: new Date(),
-      end: new Date(),
-      category: '',
-      files: [],
-      participants: [],
-    })
   }
 
   renderEvents() {
@@ -90,11 +77,6 @@ class EventList extends React.Component {
   render() {
     return (
       <div>
-        {can_view_component('event.edit') ? <FloatingActionButton
-          onTouchTap={this.insert.bind(this)}
-        >
-          <ContentAdd />
-        </FloatingActionButton> : null }
         {this.renderEvents()}
       </div>
     );

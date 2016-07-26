@@ -1,20 +1,21 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import EventList from '../components/event_list.jsx';
+import Page from '../components/page.jsx';
 
-export const composer = ({context, filterText}, onData) => {
+export const composer = ({context, title}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('event.list', filterText).ready()) {
-      var events = Collections.Events.find({}, {sort: {date: 1}}).fetch();
-      onData(null, {events});
+  if (Meteor.subscribe('page.item', title).ready()) {
+    const page = Collections.Pages.findOne();
+    onData(null, {page})
   }
 };
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
+  update: actions.pages.update,
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(EventList);
+)(Page);

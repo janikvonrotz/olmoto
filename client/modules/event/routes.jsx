@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
-import EventPage from './components/event_page';
+import EventPage from './containers/event_page';
 import EventEdit from './containers/event_edit';
 import EventView from './containers/event_view';
 

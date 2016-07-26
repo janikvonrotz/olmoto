@@ -11,7 +11,8 @@ export const composer = ({context, filterText}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  remove: actions.users.remove,
 });
 
 export default composeAll(

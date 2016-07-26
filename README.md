@@ -3,7 +3,7 @@
 Create events and share photos with your friends.
 
 * Stores photos on Dropbox.
-* Invite users by email.
+* Invite users simply by email.
 
 Technical features
 
@@ -11,6 +11,8 @@ Technical features
 * Ready for deployment to heroku.
 * Mobile first ui with material design.
 * Fulltext search everywhere.
+* File upload with Meteor-Files.
+* Keyboard navigation in single views.
 
 # Configure and Run
 
@@ -26,18 +28,27 @@ Technical features
 # Todo
 
 * Event view - GoogleMaps
-* User - delete
-* Configure route not found
 * Add Participants counter to event view and event list
-* Update button and position on every view and make sure structure of Cards are valid
+* Theme the app and MarkdownEditor
+* On user delete remove participations in events
+* Add Roboto font
+* Filter old events
 
 # Bug
 
 * Fix user search
-* Event list - fallback for events without category or make category required
 
 # Done
 
+* Update button and position on every view and make sure structure of Cards are valid
+* Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
+* Changing album of covers in file list has no effect
+* User delete
+* Configure route not found
+* Delete old cover when adding a new
+* Add file loader component (Img src)
+* Ablums for every event, add picture type cover -> move it to different subfolder on dropbox
+* Event list - fallback for events without category or make category required
 * File edit - Cover change (there can be only the one)
 * Responsive File GridList
 * Load spinner for cover image
@@ -57,6 +68,9 @@ Technical features
 * authenticated user have right to update event (participation is updated client side)
 
 # Ressources
+
+Wait for user to load
+http://stackoverflow.com/questions/34751753/how-to-make-flowrouter-wait-for-users-collection-on-the-client
 
 Meteor environment variables
 https://www.eventedmind.com/items/meteor-what-is-meteor-bindenvironment
