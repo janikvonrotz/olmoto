@@ -46,7 +46,6 @@ class MarkdownEditor extends React.Component {
 
   // upload file
   upload(file, selection){
-    console.log(file)
 
     this.props.upload(file, (file) => {
 
