@@ -41,7 +41,7 @@ class MarkdownEditor extends React.Component {
     });
 
     // if onChange is set call it
-    this.props.onChange && this.props.onChange(this.props.name, text)
+    this.props.onChange(this.props.name, text)
   }
 
   // upload file
