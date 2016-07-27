@@ -35,6 +35,7 @@ Technical features
 * Add Roboto font
 * Filter old events
 * Design email for user inviations
+* Configure smtp adress for send mail on heroku
 
 # Bug
 
