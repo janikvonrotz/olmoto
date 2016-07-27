@@ -34,6 +34,7 @@ Technical features
 * On user delete remove participations in events
 * Add Roboto font
 * Filter old events
+* Design email for user inviations
 
 # Bug
 
@@ -68,7 +69,7 @@ Technical features
 * user_id can be faked on client side logging.
 * authenticated user have right to update event (participation is updated client side)
 
-# Ressources
+# Resources
 
 Wait for user to load
 http://stackoverflow.com/questions/34751753/how-to-make-flowrouter-wait-for-users-collection-on-the-client
