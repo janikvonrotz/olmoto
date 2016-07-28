@@ -68,27 +68,33 @@ class EventView extends React.Component {
             })()}
             <p>{event.description}</p>
           </CardText>
+          {(()=>{
+            if(0 < participants.length){
+              return (
+                <CardTitle
+                  subtitle={"Participants (" + participants.length + ")"}
+                  actAsExpander={true}
+                  showExpandableButton={true}
+                />
+              )
+            }
+          })()}
 
-          <CardTitle
-            subtitle="Participants"
-            actAsExpander={true}
-            showExpandableButton={true}
-          />
-          <CardText
-            expandable={true}
-          >
-            <List>
-              {(() => {
-                return participants.map((user) => {
-                  return (
-                    <ListItem key={user._id}
-                      primaryText={user.profile.firstname + " " + user.profile.lastname}
-                    />
-                  );
-                })
-              })()}
-            </List>
-          </CardText>
+                <CardText
+                  expandable={true}
+                >
+                  <List>
+                    {(() => {
+                      return participants.map((user) => {
+                        return (
+                          <ListItem key={user._id}
+                            primaryText={user.profile.firstname + " " + user.profile.lastname}
+                          />
+                        );
+                      })
+                    })()}
+                  </List>
+                </CardText>
 
           <CardText>
 
