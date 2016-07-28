@@ -2,7 +2,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { amber500, cyan900, deepOrange900, indigo900, red900 } from 'material-ui/styles/colors';
-import { AppBar, Drawer, MenuItem } from 'material-ui';
+import { AppBar, Card, Drawer, MenuItem } from 'material-ui';
 import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'notie/dist/notie.css';
@@ -49,12 +49,10 @@ class Layout extends React.Component {
           <Helmet
             title={Meteor.settings.public.app_name}
             meta={[{"name": "viewport", "content": "width=device-width, initial-scale=1"}]}
-            link={[
-                {"rel": "stylesheet", "href": "https://fonts.googleapis.com/css?family=Roboto:400,300,500e", "type": "text/css"},
-            ]}
+            link={[{"rel": "stylesheet", "href": "https://fonts.googleapis.com/css?family=Roboto:400,300,500e", "type": "text/css"}]}
           />
-          <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div className="box-row"></div></div>
-          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div className="col-xs-12 col-sm-1 col-md-2"><div className="box-row"></div></div>
+          <div className="col-xs-12 col-sm-10 col-md-8">
             <div className="box">
               <AppBar
                 title={Meteor.settings.public.app_name}
@@ -71,7 +69,7 @@ class Layout extends React.Component {
               {this.props.content}
             </div>
           </div>
-          <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div className="box-row"></div></div>
+          <div className="col-xs-12 col-sm-1 col-md-2"><div className="box-row"></div></div>
         </div>
       </MuiThemeProvider>
     );
