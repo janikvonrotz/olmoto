@@ -37,7 +37,6 @@ Technical features
 * Design email for user inviations
 * Configure smtp adress for send mail on heroku
 * Download Button for Pictures
-* Add file version preview
 
 # Bug
 
@@ -46,6 +45,7 @@ Technical features
 
 # Done
 
+* Add file version preview
 * Update button and position on every view and make sure structure of Cards are valid
 * Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 * Changing album of covers in file list has no effect
