@@ -48,20 +48,20 @@ export default function () {
         function getItem (type) {
           var actions = {
             'next': () => {
-              const result = Events.find({date: {$gt: event.date}}, {sort: {date: 1}, limit: 1}).fetch()[0]
+              const result = Events.find({start: {$gt: event.start}}, {sort: {start: 1}, limit: 1}).fetch()[0]
               // if at the end ost list return first
               if(!result){
                 // get first item
-                return Events.find({}, {sort: {date: 1}}).fetch()[0];
+                return Events.find({}, {sort: {start: 1}}).fetch()[0];
               }
               return result
             },
             'previous': () => {
-              const result = Events.find({date: {$lt: event.date}}, {sort: {date: -1}, limit: 1}).fetch()[0]
+              const result = Events.find({start: {$lt: event.start}}, {sort: {start: -1}, limit: 1}).fetch()[0]
               // if at the end ost list return first
               if(!result){
                 // get first item
-                return Events.find({}, {sort: {date: -1}}).fetch()[0];
+                return Events.find({}, {sort: {start: -1}}).fetch()[0];
               }
               return result
             },

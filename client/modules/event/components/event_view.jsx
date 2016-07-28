@@ -48,10 +48,12 @@ class EventView extends React.Component {
     return (
       <div>
         <Card>
+          <CardHeader
+            subtitle={moment(event.date).format('D MMMM') + ', ' +
+              moment(event.start).format('HH:mm') + ' - ' +
+              moment(event.end).format('HH:mm')}
+          />
           <CardMedia
-            overlay={<CardTitle subtitle={moment(event.date).format('D MMMM') + ', ' +
-              moment(event.start).format('hh:mm') + ' - ' +
-              moment(event.end).format('hh:mm')} />}
           >
             <ImageLoader src={cover} />
           </CardMedia>

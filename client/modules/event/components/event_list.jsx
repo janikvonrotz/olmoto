@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, GridList, GridTile, Subheader } from 'material-ui';
+import { Badge, Divider, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
 import { darkBlack } from 'material-ui/styles/colors';
 import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
@@ -7,6 +7,16 @@ import moment from 'moment';
 class EventList extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  addParticipant() {
+    this.props.event.participants.push(Meteor.userId())
+    this.props.update(this.props.event)
+  }
+
+  removeParticipant() {
+    this.props.event.participants.splice(this.props.event.participants.indexOf(Meteor.userId()), 1)
+    this.props.update(this.props.event)
   }
 
   detailView() {
@@ -26,6 +36,12 @@ class EventList extends React.Component {
         overflowY: 'auto',
         marginBottom: 24,
       },
+      participants: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        color: '#fff',
+      },
     };
 
     return _.map(_.groupBy(this.props.events.map(event => event), (g) => {
@@ -33,7 +49,7 @@ class EventList extends React.Component {
       }), (value, key) => {
 
         var events = value.map((event) => {
-          let size = (event.end - event.start)/(60*60*1000)
+          let size = Math.floor((event.end - event.start)/(60*60*1000))
 
           return(
             <GridTile
@@ -42,7 +58,7 @@ class EventList extends React.Component {
               actionIcon={this.renderIcon(event.category)}
               title={event.title}
               titleBackground="rgba(0,0,0,0.8)"
-              subtitle={<p>{moment(event.start).format('hh:mm')} - {moment(event.end).format('hh:mm')}</p>}
+              subtitle={<p>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</p>}
               cols={5 > size ? size : 4}
               rows={3 > size ? size : 2}
             >
@@ -72,6 +88,9 @@ class EventList extends React.Component {
     const styles = {
       icons: {
         margin: 10,
+        padding: 10,
+        border: '1px solid #fff',
+        borderRadius: '50%',
       },
       color: '#fff',
     };
