@@ -63,9 +63,9 @@ class EventView extends React.Component {
           <CardText>
             {(()=>{
               if(event.participants.includes(Meteor.userId())){
-                return(<RaisedButton secondary={true} label="Nahh, not for me, bro..." onTouchTap={this.removeParticipant.bind(this)}/>);
+                return(<RaisedButton primary={true} label="Signed up for that shizzle!" onTouchTap={this.removeParticipant.bind(this)}/>);
               }else{
-                return(<RaisedButton primary={true} label="Sign me up for that shit!" onTouchTap={this.addParticipant.bind(this)}/>);
+                return(<RaisedButton secondary={true} label="Nahh bro, you'll do that without me..." onTouchTap={this.addParticipant.bind(this)}/>);
               }
             })()}
             <p>{event.description}</p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Divider, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
-import { darkBlack } from 'material-ui/styles/colors';
+import { cyan900, darkBlack, deepOrange900 } from 'material-ui/styles/colors';
 import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
 
@@ -12,11 +12,13 @@ class EventList extends React.Component {
   addParticipant() {
     this.props.event.participants.push(Meteor.userId())
     this.props.update(this.props.event)
+    return false
   }
 
   removeParticipant() {
     this.props.event.participants.splice(this.props.event.participants.indexOf(Meteor.userId()), 1)
     this.props.update(this.props.event)
+    return false
   }
 
   detailView() {
@@ -38,8 +40,8 @@ class EventList extends React.Component {
       },
       participants: {
         position: 'absolute',
-        top: 10,
-        right: 10,
+        top: 5,
+        right: 5,
         color: '#fff',
       },
     };
@@ -56,13 +58,38 @@ class EventList extends React.Component {
               key={event._id}
               onTouchTap={this.detailView.bind(event)}
               actionIcon={this.renderIcon(event.category)}
+              style={{backgroundImage: 'url('+event.cover+')', backgroundSize: 'cover', backgroundPosition: 'center'}}
               title={event.title}
               titleBackground="rgba(0,0,0,0.8)"
               subtitle={<p>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</p>}
               cols={5 > size ? size : 4}
               rows={3 > size ? size : 2}
             >
-              <img src={event.cover} />
+              <div style={styles.participants}>
+                {(()=>{
+                  if(event.participants.includes(Meteor.userId())){
+                    return(
+                      <FloatingActionButton
+                        mini={true}
+                        backgroundColor={cyan900}
+                        onTouchTap={this.removeParticipant.bind(event)}
+                      >
+                        <div style={{color: '#fff'}}>{event.participants.length}</div>
+                      </FloatingActionButton>
+                    );
+                  }else{
+                    return(
+                      <FloatingActionButton
+                        mini={true}
+                        backgroundColor={deepOrange900}
+                        onTouchTap={this.addParticipant.bind(event)}
+                      >
+                        <div style={{color: '#fff'}}>{event.participants.length}</div>
+                      </FloatingActionButton>
+                    );
+                  }
+                })()}
+              </div>
             </GridTile>
           );
         })
