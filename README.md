@@ -36,13 +36,16 @@ Technical features
 * Filter old events
 * Design email for user inviations
 * Configure smtp adress for send mail on heroku
+* Download Button for Pictures
 
 # Bug
 
 * Fix user search
+* Mobile event view does not load (edit works fine) -> lags a lot.
 
 # Done
 
+* Add file version preview
 * Update button and position on every view and make sure structure of Cards are valid
 * Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.
 * Changing album of covers in file list has no effect
@@ -67,8 +70,9 @@ Technical features
 
 # Security risk
 
-* user_id can be faked on client side logging.
+* user_id can be faked on client side for logging.
 * authenticated user have right to update event (participation is updated client side)
+* user credentials are passed in get request.
 
 # Resources
 

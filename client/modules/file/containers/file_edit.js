@@ -7,7 +7,7 @@ export const composer = ({context, fileId}, onData) => {
   if (Meteor.subscribe('file.item', fileId).ready() && Meteor.subscribe('event.list').ready()) {
       const file = Collections.Files.collection.findOne();
       const events = Collections.Events.find().fetch();
-      file.src = Collections.Files.link(file);
+      file.src = Collections.Files.link(file, 'preview');
       onData(null, {file, events});
   }
 };
