@@ -6,7 +6,7 @@ export const composer = ({context, fileId}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('file.item', fileId).ready()) {
       var file = Collections.Files.collection.findOne();
-      file.src = Collections.Files.link(file);
+      file.src = Collections.Files.link(file, 'preview');
       onData(null, {file});
   }
 };
