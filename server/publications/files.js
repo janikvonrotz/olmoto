@@ -45,13 +45,13 @@ export default function () {
   });
 
   Meteor.publish('file.covers', function () {
-    // if(is_allowed('file.covers', this.userId)){
+    if(is_allowed('file.covers', this.userId)){
       var result = Files.collection.find({
         "meta.usage": "cover"
       });
       return result;
-    // }else{
-    //   this.stop();
-    // }
+    }else{
+      this.stop();
+    }
   });
 }
