@@ -6,7 +6,7 @@
   "private": {
     "log_user_actions": false,
     "log_levels": ["error"],
-    "mail_url": "smtp://localhost:1025",
+    "mail_url": "user%40gmail.com:password@smtp.gmail.com:465",
     "admin_email": "admin@olmoto.com",
     "admin_password": "password",
     "app_url": "https://olmoto.com",

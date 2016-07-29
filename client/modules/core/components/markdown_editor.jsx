@@ -50,7 +50,7 @@ class MarkdownEditor extends React.Component {
     this.props.upload(file, (file) => {
 
       // create url
-      var url = `![${file._id}](/cdn/storage/files/${file._id}/original/)`
+      var url = `![${file._id}](/cdn/storage/files/${file._id}/preview/)`
 
       // insert url into editor
       const editorState = this.state.editorState;

@@ -8,7 +8,7 @@ export const composer = ({context, eventId}, onData) => {
       const event = Collections.Events.findOne();
       var cover = Collections.Files.collection.findOne();
       if(cover){
-        cover = Collections.Files.link(cover);
+        cover = Collections.Files.link(cover, 'preview');
       }
       onData(null, {event, cover});
   }
