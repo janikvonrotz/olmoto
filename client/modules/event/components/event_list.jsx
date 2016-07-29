@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Divider, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
-import { amber600, blueGrey50, cyan900, darkBlack, deepOrange900 } from 'material-ui/styles/colors';
+import { amber600, blueGrey50, lightGreen900, darkBlack, deepOrange500 } from 'material-ui/styles/colors';
 import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
 
@@ -78,7 +78,7 @@ class EventList extends React.Component {
                     return(
                       <FloatingActionButton
                         mini={true}
-                        backgroundColor={cyan900}
+                        backgroundColor={lightGreen900}
                         onTouchTap={this.removeParticipant.bind(event)}
                       >
                         <div style={{color: '#fff'}}>{event.participants.length}</div>
@@ -88,7 +88,7 @@ class EventList extends React.Component {
                     return(
                       <FloatingActionButton
                         mini={true}
-                        backgroundColor={deepOrange900}
+                        backgroundColor={deepOrange500}
                         onTouchTap={this.addParticipant.bind(event)}
                       >
                         <div style={{color: '#fff'}}>{event.participants.length}</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { amber600, blueGrey700, cyan900, deepOrange900, indigo900, red900 } from 'material-ui/styles/colors';
+import { amber600, blueGrey700, cyan900, deepOrange500, indigo900, red900 } from 'material-ui/styles/colors';
 import { AppBar, Card, Drawer, MenuItem } from 'material-ui';
 import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
@@ -19,7 +19,7 @@ const muiTheme = getMuiTheme({
   },
   raisedButton: {
     primaryColor: amber600,
-    secondaryColor: deepOrange900,
+    secondaryColor: deepOrange500,
   }
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, RaisedButton, CardText, List, ListItem} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 'material-ui/svg-icons';
-import { blueGrey50, cyan900 } from 'material-ui/styles/colors';
+import { blueGrey50, lightGreen900 } from 'material-ui/styles/colors';
 import keydown from 'react-keydown';
 import moment from 'moment';
 import {can_view_component} from '/lib/access_control';
@@ -49,20 +49,59 @@ class EventView extends React.Component {
     return (
       <div>
         <Card style={{backgroundColor: blueGrey50}}>
-          <CardHeader
-            title={moment(event.date).format('D MMMM') + ', ' +
-              moment(event.start).format('HH:mm') + ' - ' +
-              moment(event.end).format('HH:mm')}
-            titleStyle={{verticalAlign: 'middle', lineHeight: '36px', width: 'auto'}}
+          <CardText
+            style={{position: 'relative', padding: 10}}
           >
+            <div style={{width: '100%', textAlign: 'center'}}>
+              <h5 style={{marginTop: 0}} >
+                {moment(event.date).format('D MMMM') + ', ' +
+                moment(event.start).format('HH:mm') + ' - ' +
+                moment(event.end).format('HH:mm')}
+              </h5>
+            </div>
+            <div style={{width: '100%', textAlign: 'center', paddingBottom: 10}}>
+              <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
+                <HardwareKeyboardArrowLeft />
+              </FloatingActionButton>
+
+              <FloatingActionButton linkButton={true} href="/events" style={{margin: '0 30px'}}>
+                <ActionList />
+              </FloatingActionButton>
+
+              <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
+               <HardwareKeyboardArrowRight />
+              </FloatingActionButton>
+            </div>
             {can_view_component('event.edit') ? <RaisedButton
               label="Edit"
               linkButton={true}
               href={event._id + "/edit"}
               primary={true}
-              style={{float: 'right'}}
+              style={{position: 'absolute', top: 10, right: 10}}
             /> : null }
-          </CardHeader>
+          </CardText>
+          {(()=>{
+            if(event.participants.includes(Meteor.userId())){
+              return(
+                <RaisedButton
+                  backgroundColor={lightGreen900}
+                  label="Bin in der Platz !!!"
+                  labelColor='#fff'
+                  onTouchTap={this.removeParticipant.bind(this)}
+                  style={{width: '100%'}}
+                />
+              );
+            }else{
+              return(
+                <RaisedButton
+                  secondary={true}
+                  label="Nahh bro, not with me..."
+                  onTouchTap={this.addParticipant.bind(this)}
+                  style={{width: '100%'}}
+                />
+              );
+            }
+          })()}
 
           <CardMedia
             style={{backgroundColor: '#fff'}}
@@ -73,13 +112,6 @@ class EventView extends React.Component {
             title={event.title}
           />
           <CardText>
-            {(()=>{
-              if(event.participants.includes(Meteor.userId())){
-                return(<RaisedButton backgroundColor={cyan900} labelColor='#fff' label="Totally signed up for that shizzle!" onTouchTap={this.removeParticipant.bind(this)}/>);
-              }else{
-                return(<RaisedButton secondary={true} label="Nahh bro, you'll do that without me..." onTouchTap={this.addParticipant.bind(this)}/>);
-              }
-            })()}
             <p>{event.description}</p>
           </CardText>
           {(()=>{
@@ -111,19 +143,6 @@ class EventView extends React.Component {
                 </CardText>
 
           <CardText>
-            <div style={{width: '100%', textAlign: 'center'}}>
-              <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
-                <HardwareKeyboardArrowLeft />
-              </FloatingActionButton>
-
-              <FloatingActionButton linkButton={true} href="/events" style={{margin: '0 30px'}}>
-                <ActionList />
-              </FloatingActionButton>
-
-              <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
-               <HardwareKeyboardArrowRight />
-              </FloatingActionButton>
-            </div>
           </CardText>
         </Card>
       </div>
