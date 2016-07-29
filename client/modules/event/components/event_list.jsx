@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Divider, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
-import { cyan900, darkBlack, deepOrange900 } from 'material-ui/styles/colors';
+import { amber600, blueGrey50, cyan900, darkBlack, deepOrange900 } from 'material-ui/styles/colors';
 import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
 
@@ -58,6 +58,7 @@ class EventList extends React.Component {
               key={event._id}
               onTouchTap={this.detailView.bind(event)}
               actionIcon={this.renderIcon(event.category)}
+              actionPosition='left'
               style={{
                 backgroundImage: `url(${event.cover})`,
                 backgroundSize: 'contain',
@@ -106,7 +107,11 @@ class EventList extends React.Component {
               cellHeight={150}
               style={styles.gridList}
             >
-              <Subheader>
+              <Subheader
+                style={{
+                  backgroundColor: blueGrey50,
+                }}
+              >
                 {moment(key).format('D MMMM')}
               </Subheader>
               {events}
@@ -120,9 +125,9 @@ class EventList extends React.Component {
     const styles = {
       icons: {
         margin: 10,
-        padding: 10,
+        padding: 5,
         border: '1px solid #fff',
-        borderRadius: '50%',
+        backgroundColor: amber600,
       },
       color: '#fff',
     };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, RaisedButton, CardText, List, ListItem} from 'material-ui';
 import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 'material-ui/svg-icons';
+import { blueGrey50, cyan900 } from 'material-ui/styles/colors';
 import keydown from 'react-keydown';
 import moment from 'moment';
 import {can_view_component} from '/lib/access_control';
@@ -47,7 +48,7 @@ class EventView extends React.Component {
 
     return (
       <div>
-        <Card>
+        <Card style={{backgroundColor: blueGrey50}}>
           <CardHeader
             title={moment(event.date).format('D MMMM') + ', ' +
               moment(event.start).format('HH:mm') + ' - ' +
@@ -64,6 +65,7 @@ class EventView extends React.Component {
           </CardHeader>
 
           <CardMedia
+            style={{backgroundColor: '#fff'}}
           >
             <ImageLoader src={cover} />
           </CardMedia>
@@ -73,7 +75,7 @@ class EventView extends React.Component {
           <CardText>
             {(()=>{
               if(event.participants.includes(Meteor.userId())){
-                return(<RaisedButton primary={true} label="Totally signed up for that shizzle!" onTouchTap={this.removeParticipant.bind(this)}/>);
+                return(<RaisedButton backgroundColor={cyan900} label="Totally signed up for that shizzle!" onTouchTap={this.removeParticipant.bind(this)}/>);
               }else{
                 return(<RaisedButton secondary={true} label="Nahh bro, you'll do that without me..." onTouchTap={this.addParticipant.bind(this)}/>);
               }

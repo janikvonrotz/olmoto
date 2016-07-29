@@ -16,7 +16,6 @@ export const composer = ({context, filterText}, onData) => {
       if (cover) {
         event.cover = Collections.Files.link(cover)
       }
-      console.log(event);
       return event;
     })
     onData(null, { events });

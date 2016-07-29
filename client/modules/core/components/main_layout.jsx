@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { amber500, cyan900, deepOrange900, indigo900, red900 } from 'material-ui/styles/colors';
+import { amber600, blueGrey700, cyan900, deepOrange900, indigo900, red900 } from 'material-ui/styles/colors';
 import { AppBar, Card, Drawer, MenuItem } from 'material-ui';
 import {classNames} from 'classnames';
 import 'flexboxgrid/css/flexboxgrid.min.css'
@@ -12,13 +12,13 @@ import Helmet from 'react-helmet';
 
 const muiTheme = getMuiTheme({
   appBar: {
-    color: indigo900,
+    color: blueGrey700,
   },
   floatingActionButton: {
-    color: indigo900,
+    color: amber600,
   },
   raisedButton: {
-    primaryColor: cyan900,
+    primaryColor: amber600,
     secondaryColor: deepOrange900,
   }
 });
