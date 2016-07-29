@@ -14,7 +14,7 @@ export const composer = ({context, filterText}, onData) => {
         return cover.meta.albumId === event._id;
       })
       if (cover) {
-        event.cover = Collections.Files.link(cover)
+        event.cover = Collections.Files.link(cover, 'preview')
       }
       return event;
     })
