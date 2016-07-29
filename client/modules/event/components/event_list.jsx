@@ -70,6 +70,7 @@ class EventList extends React.Component {
               subtitle={<p>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</p>}
               cols={5 > size ? size : 4}
               rows={3 > size ? size : 2}
+              containerElement={<a href='#'></a>}
             >
               <div style={styles.participants}>
                 {(()=>{
