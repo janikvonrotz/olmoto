@@ -26,6 +26,7 @@
     "notie": "3.x.x",
     "react": "15.x.x",
     "react-dom": "15.x.x",
+    "react-google-maps": "^4.11.0",
     "react-helmet": "3.x.x",
     "react-keydown": "1.x.x",
     "react-komposer": "1.x.x",

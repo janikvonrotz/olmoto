@@ -10,6 +10,7 @@
     "admin_email": "admin@olmoto.com",
     "admin_password": "password",
     "app_url": "https://olmoto.com",
-    "dropbox_token": "xxxxxx"
+    "dropbox_token": "xxxxxx",
+    "google_map_api": "xxxxxx"
   }
 }

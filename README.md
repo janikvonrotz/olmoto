@@ -29,10 +29,9 @@ Technical features
 # Todo
 
 * Event view - GoogleMaps
-* Add Participants counter to event view and event list
+* Reactive participants counter on event list (action is not fired, goes straight to detail view)
 * Theme the app and MarkdownEditor
 * On user delete remove participations in events
-* Add Roboto font
 * Filter old events
 * Design email for user inviations
 * Configure smtp adress for send mail on heroku
@@ -45,6 +44,7 @@ Technical features
 
 # Done
 
+* Add Roboto font
 * Add file version preview
 * Update button and position on every view and make sure structure of Cards are valid
 * Pages -> Page title="home" -> if not exist create page (check is sub) and show Draft.js Editor with markdown to render the page. With picture upload (drag and drop and paste) usage: page.

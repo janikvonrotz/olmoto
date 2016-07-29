@@ -1,11 +1,12 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, FloatingActionButton, RaisedButton, CardText, List, ListItem} from 'material-ui';
-import {HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList} from 'material-ui/svg-icons';
+import { Card, CardActions, CardHeader, CardMedia, CardText, CardTitle, Chip, FloatingActionButton, RaisedButton, List, ListItem } from 'material-ui';
+import { HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList } from 'material-ui/svg-icons';
 import { blueGrey50, lightGreen900 } from 'material-ui/styles/colors';
 import keydown from 'react-keydown';
 import moment from 'moment';
 import {can_view_component} from '/lib/access_control';
 import ImageLoader from '../../core/components/image_loader.jsx';
+import EventMap from './event_map.jsx';
 
 class EventView extends React.Component {
   constructor(props) {
@@ -38,6 +39,16 @@ class EventView extends React.Component {
         fileStatus: 'loading'
       })
     }
+  }
+
+  createMarker() {
+    return [{
+      position: {
+        lat: +this.props.event.latitude,
+        lng: +this.props.event.longitude,
+      },
+      key: this.props.event.title,
+    }];
   }
 
   render() {
@@ -112,7 +123,16 @@ class EventView extends React.Component {
             title={event.title}
           />
           <CardText>
-            <p>{event.description}</p>
+            {(()=>{
+              if('' != event.web){
+                return <p>{event.description}</p>
+              }
+            })()}
+            {(()=>{
+              if('' != event.web){
+                return <p><a href={event.web} >{event.web}</a></p>
+              }
+            })()}
           </CardText>
           {(()=>{
             if(0 < participants.length){
@@ -125,26 +145,23 @@ class EventView extends React.Component {
               )
             }
           })()}
-
-                <CardText
-                  expandable={true}
-                >
-                  <List>
-                    {(() => {
-                      return participants.map((user) => {
-                        return (
-                          <ListItem key={user._id}
-                            primaryText={user.profile.firstname + " " + user.profile.lastname}
-                          />
-                        );
-                      })
-                    })()}
-                  </List>
-                </CardText>
-
-          <CardText>
+          <CardText
+            expandable={true}
+          >
+            <List>
+              {(() => {
+                return participants.map((user) => {
+                  return (
+                    <ListItem key={user._id}
+                      primaryText={user.profile.firstname + " " + user.profile.lastname}
+                    />
+                  );
+                })
+              })()}
+            </List>
           </CardText>
         </Card>
+        <EventMap markers={this.createMarker()}/>
       </div>
     );
   }
