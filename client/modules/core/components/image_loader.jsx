@@ -3,9 +3,9 @@ import Spinner from './spinner.jsx'
 
 const style = {
   verticalAlign: 'top',
-  maxWidth: '100%',
-  minWidth: '100%',
-  width: '100%'
+  objectFit: 'contain',
+  width: '100%',
+  maxHeight: 400,
 }
 
 class ImageLoader extends React.Component {

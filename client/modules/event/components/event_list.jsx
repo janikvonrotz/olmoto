@@ -58,7 +58,12 @@ class EventList extends React.Component {
               key={event._id}
               onTouchTap={this.detailView.bind(event)}
               actionIcon={this.renderIcon(event.category)}
-              style={{backgroundImage: 'url('+event.cover+')', backgroundSize: 'cover', backgroundPosition: 'center'}}
+              style={{
+                backgroundImage: `url(${event.cover})`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
               title={event.title}
               titleBackground="rgba(0,0,0,0.8)"
               subtitle={<p>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</p>}
