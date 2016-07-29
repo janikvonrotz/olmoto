@@ -132,18 +132,18 @@ class EventEdit extends React.Component {
                   onChange={this.updateField.bind(this, 'web')}
               />
               <TextField
-                  defaultValue={event.longitude}
-                  floatingLabelText="Longitude"
-                  multiLine={true}
-                  fullWidth={true}
-                  onChange={this.updateField.bind(this, 'longitude')}
-              />
-              <TextField
                   defaultValue={event.latitude}
                   floatingLabelText="Latitude"
                   multiLine={true}
                   fullWidth={true}
                   onChange={this.updateField.bind(this, 'latitude')}
+              />
+              <TextField
+                  defaultValue={event.longitude}
+                  floatingLabelText="Longitude"
+                  multiLine={true}
+                  fullWidth={true}
+                  onChange={this.updateField.bind(this, 'longitude')}
               />
               <RaisedButton
                   label="Save"

@@ -47,7 +47,8 @@ class EventView extends React.Component {
         lat: +this.props.event.latitude,
         lng: +this.props.event.longitude,
       },
-      key: this.props.event.title,
+      key: this.props.event._id,
+      title: this.props.event.title,
     }];
   }
 
@@ -63,13 +64,6 @@ class EventView extends React.Component {
           <CardText
             style={{position: 'relative', padding: 10}}
           >
-            <div style={{width: '100%', textAlign: 'center'}}>
-              <h5 style={{marginTop: 0}} >
-                {moment(event.date).format('D MMMM') + ', ' +
-                moment(event.start).format('HH:mm') + ' - ' +
-                moment(event.end).format('HH:mm')}
-              </h5>
-            </div>
             <div style={{width: '100%', textAlign: 'center', paddingBottom: 10}}>
               <FloatingActionButton onTouchTap={this.goToPrevious.bind(this)}>
                 <HardwareKeyboardArrowLeft />
@@ -82,6 +76,13 @@ class EventView extends React.Component {
               <FloatingActionButton onTouchTap={this.goToNext.bind(this)}>
                <HardwareKeyboardArrowRight />
               </FloatingActionButton>
+            </div>
+            <div style={{width: '100%', textAlign: 'center'}}>
+              <h5 style={{marginTop: 0}} >
+                {moment(event.date).format('D MMMM') + ', ' +
+                moment(event.start).format('HH:mm') + ' - ' +
+                moment(event.end).format('HH:mm')}
+              </h5>
             </div>
             {can_view_component('event.edit') ? <RaisedButton
               label="Edit"
@@ -161,7 +162,11 @@ class EventView extends React.Component {
             </List>
           </CardText>
         </Card>
-        <EventMap markers={this.createMarker()}/>
+        {(() => {
+          if (0 < event.longitude && 0 < event.latitude) {
+            return <EventMap markers={this.createMarker()}/>
+          }
+        })()}
       </div>
     );
   }

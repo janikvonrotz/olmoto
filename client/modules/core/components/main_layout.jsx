@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { amber600, blueGrey700, cyan900, deepOrange500, indigo900, red900 } from 'material-ui/styles/colors';
@@ -50,7 +51,7 @@ class Layout extends React.Component {
             title={Meteor.settings.public.app_name}
             meta={[{"name": "viewport", "content": "width=device-width, initial-scale=1"}]}
             link={[{"rel": "stylesheet", "href": "https://fonts.googleapis.com/css?family=Roboto:400,300,500e", "type": "text/css"}]}
-            script={[{"src": "https://maps.googleapis.com/maps/api/js?key=AIzaSyA0H2O-M56AfpiGw0OrPPC2WLK0lL9D7MA", "type": "text/javascript"}]}
+            script={[{"src": "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.google_map_api, "type": "text/javascript"}]}
           />
           <div className="col-xs-12 col-sm-1 col-md-2"><div className="box-row"></div></div>
           <div className="col-xs-12 col-sm-10 col-md-8">

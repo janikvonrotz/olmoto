@@ -3,6 +3,7 @@ import { Badge, Divider, FloatingActionButton, GridList, GridTile, Subheader } f
 import { amber600, blueGrey50, lightGreen900, darkBlack, deepOrange500 } from 'material-ui/styles/colors';
 import {MapsRestaurant, PlacesFitnessCenter, MapsLocalBar, NotificationAirlineSeatFlat, PlacesBeachAccess} from 'material-ui/svg-icons';
 import moment from 'moment';
+import EventMap from './event_map.jsx';
 
 class EventList extends React.Component {
   constructor(props) {
@@ -23,6 +24,21 @@ class EventList extends React.Component {
 
   detailView() {
     FlowRouter.go('/events/' + this._id)
+  }
+
+  createMarkers() {
+    return this.props.events.map((event) => {
+      if (!isNaN(+event.longitude) && !isNaN(+event.latitude)) {
+        return {
+          position: {
+            lat: +event.latitude,
+            lng: +event.longitude,
+          },
+          key: event._id,
+          title: event.title,
+        };
+      }
+    })
   }
 
   renderEvents() {
@@ -166,6 +182,7 @@ class EventList extends React.Component {
     return (
       <div>
         {this.renderEvents()}
+        <EventMap markers={this.createMarkers()} />
       </div>
     );
   }

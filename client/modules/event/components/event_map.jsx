@@ -22,13 +22,21 @@ class EventMap extends React.Component {
             defaultZoom={13}
             defaultCenter={{ lat: 52.4987802, lng: 13.4357891 }}
           >
-            {this.props.markers.map((marker, index) => {
-              return (
-                <Marker
-                  { ...marker }
-                />
-              );
-            })}
+            {(()=>{
+              return this.props.markers.map((marker, index) => {
+                return (
+                  <Marker
+                    {...marker}
+                  />
+                );
+              })
+            })()}
+            <Marker
+              key='Die Fabrik'
+              title='Die Fabrik'
+              position={{ lat: 52.4987802, lng: 13.4357891 }}
+              icon='https://maps.google.com/mapfiles/kml/shapes/lodging_maps.png'
+            />
           </GoogleMap>
         }
       />
