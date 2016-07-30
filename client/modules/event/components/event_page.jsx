@@ -14,17 +14,24 @@ class EventPage extends React.Component {
   }
 
   insert() {
+    let date = new Date();
+    date.setHours(0,0,0,0);
+    let start = new Date();
+    start.setHours(12,0,0,0);
+    let end = new Date();
+    end.setHours(13,0,0,0);
+
     this.props.insert({
       files: [],
       title: 'untitled',
-      date: new Date().setHours(0,0,0,0),
-      start: new Date().setHours(12,0,0,0),
-      end: new Date().setHours(13,0,0,0),
+      date: date,
+      start: start,
+      end: end,
       category: 'food',
       desciption: '',
       web: '',
-      longitude: 0.0,
-      latitude: 0.0,
+      longitude: '',
+      latitude: '',
       participants: [],
     })
   }
