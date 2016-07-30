@@ -28,9 +28,7 @@ Technical features
 
 # Todo
 
-* Event view - GoogleMaps
-* Reactive participants counter on event list (action is not fired, goes straight to detail view)
-* Theme the app and MarkdownEditor
+* Style file_list
 * On user delete remove participations in events
 * Filter old events
 * Design email for user inviations
@@ -39,11 +37,15 @@ Technical features
 
 # Bug
 
+* New user doesn't work
+* Reactive participants counter on event list (action is not fired, goes straight to detail view)
 * Fix user search
 * Mobile event view does not load (edit works fine) -> lags a lot.
 
 # Done
 
+* Theme the app and MarkdownEditor
+* Event view - GoogleMaps
 * Add Roboto font
 * Add file version preview
 * Update button and position on every view and make sure structure of Cards are valid
