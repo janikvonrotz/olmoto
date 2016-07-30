@@ -9,18 +9,21 @@ export default () => {
     user.profile = options.profile ? options.profile : {};
     user.admin = options.admin;
 
-    // send verification mail
-    // Meteor.setTimeout(function() {
-    //   Accounts.sendVerificationEmail(user._id);
-    // }, 2 * 1000);
     if(options.initpass){
       var email = user.emails[0].address;
       Email.send({
         to: email,
         from: Meteor.settings.private.admin_email,
-        subject: "Invitation",
-        text: "You have been invited. Join:" +
-         Meteor.settings.private.app_url + "/login/" + email + "/" + options.initpass,
+        subject: `Invitation ${Meteor.settings.public.app_name} app`,
+        html: `<p>Hi ${user.profile.firstname},
+          you are receiving this mail because you have been invited to join the ${Meteor.settings.public.app_name} app.
+          Logging in is quite easy. Simply use this url:
+
+          <a href="${Meteor.settings.private.app_url}/login/${email}/${options.initpass}">${Meteor.settings.private.app_url}/login/${email}/${options.initpass}</a>
+
+          Make sure you don't share this url with anybody!
+          the ${Meteor.settings.public.app_name} team.
+        </p>`,
       });
     }
 

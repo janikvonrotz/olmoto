@@ -34,10 +34,11 @@ Technical features
 * Design email for user inviations
 * Configure smtp adress for send mail on heroku
 * Download Button for Pictures
+* Update header title and appbar with Redux
 
 # Bug
 
-* New user doesn't work
+* New user doesn't work (probably because of the mail)
 * Reactive participants counter on event list (action is not fired, goes straight to detail view)
 * Fix user search
 * Mobile event view does not load (edit works fine) -> lags a lot.
