@@ -2,8 +2,8 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './containers/main_layout';
-import Home from './containers/home.jsx';
-import NotFound from './components/not_found.jsx';
+import Home from './containers/home';
+import NotFound from './containers/not_found';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
