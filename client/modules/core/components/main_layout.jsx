@@ -63,11 +63,11 @@ class Layout extends React.Component {
               />
               <Drawer open={this.state.open}>
                 <MenuItem primaryText="Close" onTouchTap={this.handleToggle.bind(this)} leftIcon={<Clear />} />
-                <MenuItem linkButton={true} href="/" primaryText="Home" />
-                <MenuItem linkButton={true} href="/events" primaryText="Events" />
-                <MenuItem linkButton={true} href="/files" primaryText="Files" />
-                { can_view_component('user.list') ? <MenuItem linkButton={true} href="/users" primaryText="Users" /> : null }
-                { Meteor.user() ? <MenuItem linkButton={true} href="/logout" primaryText="Logout" /> : null}
+                <MenuItem href="/" primaryText="Home" />
+                <MenuItem href="/events" primaryText="Events" />
+                <MenuItem href="/files" primaryText="Files" />
+                { can_view_component('user.list') ? <MenuItem href="/users" primaryText="Users" /> : null }
+                { Meteor.user() ? <MenuItem href="/logout" primaryText="Logout" /> : null}
               </Drawer>
               {this.props.content}
             </div>
