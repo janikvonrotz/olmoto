@@ -31,10 +31,8 @@ Technical features
 # Todo
 
 * Style file_list
-* Participants list in event (Chips)
 * On user delete remove participations in events
 * Filter old events
-* Design email for user inviations
 * Download Button for Pictures
 * Update header title and appbar with Redux
 
@@ -46,6 +44,8 @@ Technical features
 
 # Done
 
+* Design email for user inviations
+* Participants list in event (Chips)
 * New user doesn't work (probably because of the mail)
 * Configure smtp adress for send mail on heroku
 * Theme the app and MarkdownEditor
