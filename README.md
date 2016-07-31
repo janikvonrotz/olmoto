@@ -34,7 +34,6 @@ Technical features
 * On user delete remove participations in events
 * Filter old events
 * Download Button for Pictures
-* Update header title and appbar with Redux
 
 # Bug
 
@@ -44,6 +43,7 @@ Technical features
 
 # Done
 
+* Update header title and appbar with Redux
 * Design email for user inviations
 * Participants list in event (Chips)
 * New user doesn't work (probably because of the mail)
