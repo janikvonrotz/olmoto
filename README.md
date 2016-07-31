@@ -31,6 +31,7 @@ Technical features
 # Todo
 
 * Style file_list
+* All innline styles to const styles
 * On user delete remove participations in events
 * Filter old events
 * Download Button for Pictures
@@ -38,11 +39,11 @@ Technical features
 # Bug
 
 * Reactive participants counter on event list (action is not fired, goes straight to detail view)
-* Fix user search
-* Mobile event view does not load (edit works fine) -> lags a lot.
 
 # Done
 
+* Mobile event view does not load (edit works fine) -> lags a lot.
+* Fix user search
 * Update header title and appbar with Redux
 * Design email for user inviations
 * Participants list in event (Chips)

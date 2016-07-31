@@ -20,16 +20,14 @@ export default function () {
       if (filterText === '' || !filterText) {
         return Meteor.users.find({});
       } else {
-        return Meteor.users.find({$or: [
-          {_id: {$regex: filterText}},
-          {"profile.lastname": {$regex: filterText}},
-          {"profile.firstname": {$regex: filterText}},
-        ]})
+        // Meteor.users must be filtered on the client!
+        return Meteor.users.find({});
       }
     }else{
       this.stop();
     }
   });
+
   Meteor.publish('user.participants', function(participants) {
     check(participants, Match.Optional(Array))
     if(is_allowed('user.participants', this.userId)){

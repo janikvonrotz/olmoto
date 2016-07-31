@@ -5,8 +5,18 @@ import UserList from '../components/user_list.jsx';
 export const composer = ({context, filterText}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('user.list', filterText).ready()) {
-      var users = Meteor.users.find({}, {sort: {"profile.lastname": -1}}).fetch();
-      onData(null, {users});
+    var users = []
+    if (filterText === '' || !filterText) {
+      users = Meteor.users.find({}).fetch();
+    } else {
+      users = Meteor.users.find({$or: [
+        {_id: {$regex: filterText}},
+        {"profile.lastname": {$regex: filterText}},
+        {"profile.firstname": {$regex: filterText}},
+        {"emails.address": {$regex: filterText}},
+      ]}).fetch()
+    }
+    onData(null, {users});
   }
 };
 
