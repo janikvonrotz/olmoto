@@ -16,6 +16,9 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
   },
+  button: {
+    width: '100%',
+  }
 };
 
 class EventView extends React.Component {
@@ -106,19 +109,19 @@ class EventView extends React.Component {
               return(
                 <RaisedButton
                   backgroundColor={lightGreen900}
-                  label="Bin in der Platz !!!"
+                  label="Nahh bro, not with me..."
                   labelColor='#fff'
                   onTouchTap={this.removeParticipant.bind(this)}
-                  style={{width: '100%'}}
+                  style={styles.button}
                 />
               );
             }else{
               return(
                 <RaisedButton
                   secondary={true}
-                  label="Nahh bro, not with me..."
+                  label="Bin in der Platz !!!"
                   onTouchTap={this.addParticipant.bind(this)}
-                  style={{width: '100%'}}
+                  style={styles.button}
                 />
               );
             }
@@ -133,16 +136,8 @@ class EventView extends React.Component {
             title={event.title}
           />
           <CardText>
-            {(()=>{
-              if('' != event.description){
-                return <p>{event.description}</p>
-              }
-            })()}
-            {(()=>{
-              if('' != event.web){
-                return <p><a href={event.web} >{event.web}</a></p>
-              }
-            })()}
+            {event.description ? <p>{event.description}<p> : null}
+            {event.web ? <p><a href={event.web} >{event.web}</a></p> : null}
             {(()=>{
               if(0 < participants.length){
                 return (
