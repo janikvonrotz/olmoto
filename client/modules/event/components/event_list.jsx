@@ -72,7 +72,7 @@ class EventList extends React.Component {
               actionPosition='left'
               style={{
                 backgroundImage: `url(${event.cover})`,
-                backgroundSize: 'contain',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
