@@ -19,7 +19,7 @@ export default () => {
           you are receiving this mail because you have been invited to join the ${Meteor.settings.public.app_name} app.
           Logging in is quite easy. Simply use this url:
 
-          <a href="${Meteor.settings.private.app_url}/login/${email}/${options.initpass}">${Meteor.settings.private.app_url}/login/${email}/${options.initpass}</a>
+          <a href="${Meteor.settings.public.app_url}/login/${email}/${options.initpass}">${Meteor.settings.public.app_url}/login/${email}/${options.initpass}</a>
 
           Make sure you don't share this url with anybody!
           the ${Meteor.settings.public.app_name} team.
