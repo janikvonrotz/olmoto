@@ -34,7 +34,7 @@ class EventMap extends React.Component {
             <Marker
               key='Die Fabrik'
               title='Die Fabrik'
-              position={{ lat: 52.4987802, lng: 13.4357891 }}
+              position={{ lat: 52.498721, lng: 13.445928 }}
               icon='https://maps.google.com/mapfiles/kml/shapes/lodging_maps.png'
             />
           </GoogleMap>
