@@ -19,8 +19,8 @@ class EventMap extends React.Component {
         googleMapElement={
           <GoogleMap
             ref={(map) => (this._googleMapComponent = map)}
-            defaultZoom={13}
-            defaultCenter={{ lat: 52.4987802, lng: 13.4357891 }}
+            defaultZoom={14}
+            defaultCenter={{ lat: 52.503925, lng: 13.437936 }}
           >
             {(()=>{
               return this.props.markers.map((marker, index) => {
