@@ -18,6 +18,12 @@ const styles = {
   },
   button: {
     width: '100%',
+  },
+  card: {
+    backgroundColor: blueGrey50,
+  },
+  cardMedia: {
+    backgroundColor: '#fff',
   }
 };
 
@@ -73,7 +79,7 @@ class EventView extends React.Component {
 
     return (
       <div>
-        <Card style={{backgroundColor: blueGrey50}}>
+        <Card style={styles.card}>
           <CardText
             style={{position: 'relative', padding: 10}}
           >
@@ -109,7 +115,7 @@ class EventView extends React.Component {
               return(
                 <RaisedButton
                   backgroundColor={lightGreen900}
-                  label="Nahh bro, not with me..."
+                  label="Bin in der Platz !!!"
                   labelColor='#fff'
                   onTouchTap={this.removeParticipant.bind(this)}
                   style={styles.button}
@@ -119,7 +125,7 @@ class EventView extends React.Component {
               return(
                 <RaisedButton
                   secondary={true}
-                  label="Bin in der Platz !!!"
+                  label="Nahh bro, not with me..."
                   onTouchTap={this.addParticipant.bind(this)}
                   style={styles.button}
                 />
@@ -128,7 +134,7 @@ class EventView extends React.Component {
           })()}
 
           <CardMedia
-            style={{backgroundColor: '#fff'}}
+            style={styles.cardMedia}
           >
             <ImageLoader src={cover} />
           </CardMedia>
