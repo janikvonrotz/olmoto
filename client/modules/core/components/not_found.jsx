@@ -4,13 +4,13 @@ const style = {
   fontFamily: 'Roboto',
 }
 
-componentDidMount(){
-  this.props.setLocalState({title: "Not Found"})
-}
-
 class NotFound extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    this.props.setLocalState({title: "Not Found"})
   }
 
   render() {
