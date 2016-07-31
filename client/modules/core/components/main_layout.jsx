@@ -44,8 +44,6 @@ class Layout extends React.Component {
 
   render(){
     const {title} = this.props
-    console.log(title)
-
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="row" style={styles.row}>

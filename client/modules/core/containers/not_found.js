@@ -1,18 +1,19 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import MainLayout from '../components/main_layout.jsx';
+import NotFound from '../components/not_found.jsx';
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections, LocalState} = context();
-  const title = LocalState.get('title') ? LocalState.get('title').title : Meteor.settings.public.app_name
-  onData(null, {title});
+  const {Meteor, Collections} = context();
+
+  onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(MainLayout);
+)(NotFound);

@@ -8,7 +8,7 @@ export default {
         notification.alert(3, err.message, 2.5);
       }else{
         notification.alert(1, 'You successfully logged in.', 2.5);
-        FlowRouter.go('/events');
+        FlowRouter.go('/');
       }
     })
   },

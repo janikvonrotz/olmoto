@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './containers/main_layout';
-import Home from './components/home.jsx';
+import Home from './containers/home.jsx';
 import NotFound from './components/not_found.jsx';
 
 export default function (injectDeps, {FlowRouter}) {
