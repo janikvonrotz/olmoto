@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import Page from '../containers/page';
 
 class Home extends React.Component {
@@ -7,7 +8,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    this.props.setLocalState({title: "Home"})
+    this.props.setLocalState({title: Meteor.settings.public.app_name})
   }
 
   render() {
