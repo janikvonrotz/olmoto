@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, CardActions, CardHeader, CardMedia, CardText, CardTitle, Chip, FloatingActionButton, RaisedButton, List, ListItem } from 'material-ui';
+import { Avatar, Card, CardActions, CardHeader, CardMedia, CardText, CardTitle, Chip, FloatingActionButton, RaisedButton, List, ListItem } from 'material-ui';
 import { HardwareKeyboardArrowLeft, HardwareKeyboardArrowRight, ActionList } from 'material-ui/svg-icons';
-import { blueGrey50, lightGreen900 } from 'material-ui/styles/colors';
+import { blueGrey50, lightBlue900, lightGreen900 } from 'material-ui/styles/colors';
 import keydown from 'react-keydown';
 import moment from 'moment';
 import {can_view_component} from '/lib/access_control';
@@ -133,32 +133,25 @@ class EventView extends React.Component {
                 return <p><a href={event.web} >{event.web}</a></p>
               }
             })()}
-          </CardText>
-          {(()=>{
-            if(0 < participants.length){
-              return (
-                <CardTitle
-                  subtitle={"Participants (" + participants.length + ")"}
-                  actAsExpander={true}
-                  showExpandableButton={true}
-                />
-              )
-            }
-          })()}
-          <CardText
-            expandable={true}
-          >
-            <List>
-              {(() => {
-                return participants.map((user) => {
+            {(()=>{
+              if(0 < participants.length){
+                return participants.map((participant) => {
                   return (
-                    <ListItem key={user._id}
-                      primaryText={user.profile.firstname + " " + user.profile.lastname}
-                    />
-                  );
+                    <Chip
+                      key={participant._id}
+                    >
+                      <Avatar
+                        size={32}
+                        backgroundColor={lightBlue900}
+                      >
+                        {participant.profile.firstname.substring(0,1) + participant.profile.lastname.substring(0,1)}
+                      </Avatar>
+                      {participant.profile.firstname}
+                    </Chip>
+                  )
                 })
-              })()}
-            </List>
+              }
+            })()}
           </CardText>
         </Card>
         {(() => {
