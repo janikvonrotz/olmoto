@@ -8,6 +8,16 @@ import {can_view_component} from '/lib/access_control';
 import ImageLoader from '../../core/components/image_loader.jsx';
 import EventMap from './event_map.jsx';
 
+const styles = {
+  chip: {
+    margin: 4,
+  },
+  chipWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+};
+
 class EventView extends React.Component {
   constructor(props) {
     super(props);
@@ -135,21 +145,28 @@ class EventView extends React.Component {
             })()}
             {(()=>{
               if(0 < participants.length){
-                return participants.map((participant) => {
-                  return (
-                    <Chip
-                      key={participant._id}
-                    >
-                      <Avatar
-                        size={32}
-                        backgroundColor={lightBlue900}
-                      >
-                        {participant.profile.firstname.substring(0,1) + participant.profile.lastname.substring(0,1)}
-                      </Avatar>
-                      {participant.profile.firstname}
-                    </Chip>
-                  )
-                })
+                return (
+                  <div style={styles.chipWrapper} >
+                    {(()=>{
+                      return participants.map((participant) => {
+                        return (
+                          <Chip
+                            key={participant._id}
+                            style={styles.chip}
+                          >
+                            <Avatar
+                              size={32}
+                              backgroundColor={lightBlue900}
+                            >
+                              {participant.profile.firstname.substring(0,1) + participant.profile.lastname.substring(0,1)}
+                            </Avatar>
+                            {participant.profile.firstname}
+                          </Chip>
+                        )
+                      })
+                    })()}
+                  </div>
+                )
               }
             })()}
           </CardText>
