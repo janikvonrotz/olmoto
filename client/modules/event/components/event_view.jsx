@@ -136,8 +136,8 @@ class EventView extends React.Component {
             title={event.title}
           />
           <CardText>
-            {event.description ? <p>{event.description}<p> : null}
-            {event.web ? <p><a href={event.web} >{event.web}</a></p> : null}
+            {event.description ? <p>{event.description}</p> : null}
+            {event.web ? <p><a href={event.web}>{event.web}</a></p> : null}
             {(()=>{
               if(0 < participants.length){
                 return (
