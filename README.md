@@ -29,22 +29,23 @@ Technical features
 # Todo
 
 * Style file_list
+* Participants list in event (Chips)
 * On user delete remove participations in events
 * Filter old events
 * Design email for user inviations
-* Configure smtp adress for send mail on heroku
 * Download Button for Pictures
 * Update header title and appbar with Redux
 
 # Bug
 
-* New user doesn't work (probably because of the mail)
 * Reactive participants counter on event list (action is not fired, goes straight to detail view)
 * Fix user search
 * Mobile event view does not load (edit works fine) -> lags a lot.
 
 # Done
 
+* New user doesn't work (probably because of the mail)
+* Configure smtp adress for send mail on heroku
 * Theme the app and MarkdownEditor
 * Event view - GoogleMaps
 * Add Roboto font
