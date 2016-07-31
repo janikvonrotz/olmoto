@@ -134,7 +134,7 @@ class EventView extends React.Component {
           />
           <CardText>
             {(()=>{
-              if('' != event.web){
+              if('' != event.description){
                 return <p>{event.description}</p>
               }
             })()}
