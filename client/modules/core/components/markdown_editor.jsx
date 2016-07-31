@@ -10,9 +10,10 @@ const styles = {
     padding: '20px',
     backgroundColor: darkBlack,
     color: grey400,
+    fontFamily: 'Roboto',
   },
   preview: {
-
+    fontFamily: 'Roboto',
   },
 }
 
@@ -100,8 +101,13 @@ class MarkdownEditor extends React.Component {
               />
             </div>
           </Tab>
-          <Tab label="Preview" >
-            <div dangerouslySetInnerHTML={{__html: htmlRendered}} />
+          <Tab
+            label="Preview"
+          >
+            <div
+              dangerouslySetInnerHTML={{__html: htmlRendered}}
+              style={styles.preview}
+            />
           </Tab>
         </Tabs>
       </div>

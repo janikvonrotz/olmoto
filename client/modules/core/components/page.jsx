@@ -5,6 +5,10 @@ import {ContentCreate, ActionDone, ContentClear} from 'material-ui/svg-icons';
 import {can_view_component} from '/lib/access_control';
 import {marked, customRender} from '../libs/marked';
 
+const style = {
+  fontFamily: 'Roboto',
+}
+
 class Page extends React.Component {
   constructor(props) {
     super(props);
@@ -67,7 +71,10 @@ class Page extends React.Component {
             onChange={this.handleChange.bind(this)}
             text={text}
             fileUsage="page" /> :
-          <div dangerouslySetInnerHTML={{__html: marked(text, {renderer: customRender})}} />
+          <div
+            dangerouslySetInnerHTML={{__html: marked(text, {renderer: customRender})}}
+            style={style}
+          />
         }
       </div>
     );
