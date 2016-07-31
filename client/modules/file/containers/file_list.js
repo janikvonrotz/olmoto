@@ -15,6 +15,7 @@ export const composer = ({context, filterText}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

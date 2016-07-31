@@ -1,7 +1,11 @@
 import React from 'react';
 
+const style = {
+  fontFamily: 'Roboto',
+}
+
 const NotFound = () => (
-  <div>
+  <div style={stlye}>
     <h1>Route not found</h1>
     <p>
       Sorry, but we couldn't find what you where looking for.

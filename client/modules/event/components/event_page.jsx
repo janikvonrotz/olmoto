@@ -42,6 +42,10 @@ class EventPage extends React.Component {
     })
   }
 
+  componentDidMount(){
+    this.props.setLocalState({title: "Events"})
+  }
+
   render() {
     return (
       <div>

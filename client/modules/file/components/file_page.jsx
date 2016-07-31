@@ -38,6 +38,10 @@ class FilePage extends React.Component {
     });
   }
 
+  componentDidMount(){
+    this.props.setLocalState({title: "Files"})
+  }
+
   render() {
     return (
       <div>

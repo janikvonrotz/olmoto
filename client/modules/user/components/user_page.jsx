@@ -31,6 +31,10 @@ class UserPage extends React.Component {
     this.setState({ showInsertForm: !this.state.showInsertForm });
   }
 
+  componentDidMount(){
+    this.props.setLocalState({title: "Users"})
+  }
+
   insert() {
     var user = {
       email: this.refs.email.getValue(),

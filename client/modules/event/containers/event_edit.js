@@ -18,7 +18,8 @@ export const depsMapper = (context, actions) => ({
   context: () => context,
   update: actions.events.update,
   remove: actions.events.remove,
-  upload: actions.files.upload
+  upload: actions.files.upload,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

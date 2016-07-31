@@ -13,6 +13,7 @@ export const composer = ({context, title}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   update: actions.pages.update,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

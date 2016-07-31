@@ -21,6 +21,7 @@ export const depsMapper = (context, actions) => ({
   context: () => context,
   goTo: actions.events.goTo,
   update: actions.events.update,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

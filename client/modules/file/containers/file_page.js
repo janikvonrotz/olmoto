@@ -10,6 +10,7 @@ export const composer = ({context, albumId}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   upload: actions.files.upload,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

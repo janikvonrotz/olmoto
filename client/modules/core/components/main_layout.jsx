@@ -43,12 +43,15 @@ class Layout extends React.Component {
   };
 
   render(){
+    const {title} = this.props
+    console.log(title)
+
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="row" style={styles.row}>
 
           <Helmet
-            title={Meteor.settings.public.app_name}
+            title={title}
             meta={[{"name": "viewport", "content": "width=device-width, initial-scale=1"}]}
             link={[{"rel": "stylesheet", "href": "https://fonts.googleapis.com/css?family=Roboto:400,300,500e", "type": "text/css"}]}
             script={[{"src": "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.google_map_api, "type": "text/javascript"}]}
@@ -57,7 +60,7 @@ class Layout extends React.Component {
           <div className="col-xs-12 col-sm-10 col-md-8">
             <div className="box">
               <AppBar
-                title={Meteor.settings.public.app_name}
+                title={title}
                 onTouchTap={this.handleToggle.bind(this)}
               />
               <Drawer open={this.state.open}>

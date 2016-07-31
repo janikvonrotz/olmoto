@@ -14,6 +14,7 @@ export const composer = ({context, fileId}, onData) => {
 export const depsMapper = (context, actions) => ({
   context: () => context,
   goTo: actions.files.goTo,
+  setLocalState: actions.core.setLocalState,
 });
 
 export default composeAll(

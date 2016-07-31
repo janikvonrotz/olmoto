@@ -2,6 +2,7 @@
   "public": {
     "app_name": "OLMOTO",
     "storage_path": "~/uploads",
+    "app_url": "https://olmoto.com",
     "google_map_api": "xxxxxx"
   },
   "private": {
@@ -10,7 +11,6 @@
     "mail_url": "user%40gmail.com:password@smtp.gmail.com:465",
     "admin_email": "admin@olmoto.com",
     "admin_password": "password",
-    "app_url": "https://olmoto.com",
     "dropbox_token": "xxxxxx"
   }
 }

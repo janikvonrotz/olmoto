@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import MainLayout from '/client/modules/core/components/main_layout.jsx';
+import MainLayout from '/client/modules/core/containers/main_layout';
 import FilePage from './containers/file_page';
 import FileView from './containers/file_view';
 import FileEdit from './containers/file_edit';
