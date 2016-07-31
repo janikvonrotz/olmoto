@@ -22,10 +22,6 @@ class EventList extends React.Component {
     return false
   }
 
-  detailView() {
-    FlowRouter.go('/events/' + this._id)
-  }
-
   createMarkers() {
     return this.props.events.map((event) => {
       if (!isNaN(+event.longitude) && !isNaN(+event.latitude)) {
@@ -72,7 +68,6 @@ class EventList extends React.Component {
           return(
             <GridTile
               key={event._id}
-              onTouchTap={this.detailView.bind(event)}
               actionIcon={this.renderIcon(event.category)}
               actionPosition='left'
               style={{
@@ -86,7 +81,7 @@ class EventList extends React.Component {
               subtitle={<p>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</p>}
               cols={5 > size ? size : 4}
               rows={3 > size ? size : 2}
-              containerElement={<a href='#'></a>}
+              containerElement={<a href={'/events/' + event._id}></a>}
             >
               <div style={styles.participants}>
                 {(()=>{
