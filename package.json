@@ -26,7 +26,7 @@
     "notie": "3.x.x",
     "react": "15.x.x",
     "react-dom": "15.x.x",
-    "react-google-maps": "^4.11.0",
+    "react-google-maps": "4.x.x",
     "react-helmet": "3.x.x",
     "react-keydown": "1.x.x",
     "react-komposer": "1.x.x",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "enzyme": "2.x.x",
     "jsdom": "8.x.x",
-    "eslint": "2.7.x",
+    "eslint": "2.x.x",
     "eslint-plugin-react": "4.3.x",
     "babel-core": "6.x.x",
     "babel-plugin-react-require": "2.x.x",
@@ -48,7 +48,7 @@
     "babel-preset-stage-2": "6.x.x",
     "babel-root-slash-import": "1.x.x",
     "babel-plugin-transform-decorators-legacy": "1.x.x",
-    "sinon": "1.17.x",
+    "sinon": "1.x.x",
     "chai": "3.x.x",
     "mocha": "2.x.x",
     "react-addons-test-utils": "15.x.x"
