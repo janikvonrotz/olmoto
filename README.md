@@ -1,9 +1,11 @@
-# olmoto
+# OLMOTO
 
 Create events and share photos with your friends.
 
 * Stores photos on Dropbox.
 * Invite users simply by email.
+
+![](https://raw.githubusercontent.com/RenoMeyer/olmoto/master/screenshot.png)
 
 Technical features
 
