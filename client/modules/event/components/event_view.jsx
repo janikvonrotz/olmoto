@@ -69,7 +69,7 @@ class EventView extends React.Component {
                 <HardwareKeyboardArrowLeft />
               </FloatingActionButton>
 
-              <FloatingActionButton linkButton={true} href="/events" style={{margin: '0 30px'}}>
+              <FloatingActionButton href="/events" style={{margin: '0 30px'}}>
                 <ActionList />
               </FloatingActionButton>
 
@@ -86,7 +86,6 @@ class EventView extends React.Component {
             </div>
             {can_view_component('event.edit') ? <RaisedButton
               label="Edit"
-              linkButton={true}
               href={event._id + "/edit"}
               primary={true}
               style={{position: 'absolute', top: 10, right: 10}}

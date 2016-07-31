@@ -37,7 +37,6 @@ class FileView extends React.Component {
           <CardText>
             {can_view_component('file.edit') ? <RaisedButton
               label="Edit"
-              linkButton={true}
               href={"/files/" + file._id + "/edit"}
               primary={true}
             /> : null}
