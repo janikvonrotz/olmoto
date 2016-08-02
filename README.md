@@ -1,5 +1,7 @@
 # OLMOTO
 
+![](https://raw.githubusercontent.com/janikvonrotz/olmoto/master/public/favicon.ico) 
+
 Create events and share photos with your friends.
 
 * Stores photos on Dropbox.
