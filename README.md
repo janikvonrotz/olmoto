@@ -10,11 +10,12 @@ Create events and share photos with your friends.
 Technical features
 
 * Access control for methods, publications and routing.
-* Ready for deployment to heroku.
 * Mobile first ui with material design.
 * Fulltext search everywhere.
-* File upload with Meteor-Files.
+* File upload to Dropbox with Meteor-Files.
+* Images with different thumbnails.
 * Keyboard navigation in single views.
+* Ready for deployment to heroku.
 
 # Configure and Run
 
